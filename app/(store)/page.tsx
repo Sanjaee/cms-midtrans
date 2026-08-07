@@ -394,7 +394,7 @@ export default async function HomePage() {
                 href="https://wa.me/6281234567890"
                 target="_blank"
                 rel="noreferrer"
-                className="mt-5 inline-flex items-center gap-2 rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-white shadow-md transition-transform hover:scale-105"
+                className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-md transition-transform hover:scale-105"
               >
                 <MessageCircle className="h-4 w-4" /> Chat WhatsApp
               </a>

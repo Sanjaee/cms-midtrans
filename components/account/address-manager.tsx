@@ -158,7 +158,7 @@ export function AddressManager({ addresses }: { addresses: Address[] }) {
                 <div className="flex items-center gap-2">
                   <p className="font-semibold">{a.label}</p>
                   {a.isDefault && (
-                    <span className="flex items-center gap-0.5 rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-semibold text-emerald-500">
+                    <span className="flex items-center gap-0.5 rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary">
                       <Check className="h-3 w-3" /> Utama
                     </span>
                   )}

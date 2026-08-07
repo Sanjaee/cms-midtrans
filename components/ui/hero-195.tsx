@@ -15,8 +15,6 @@ import { BorderBeam } from "@/components/ui/border-beam";
 export function Hero195() {
   return (
     <section className="relative overflow-hidden border-b bg-background">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,var(--border)_1px,transparent_0)] bg-[size:28px_28px] opacity-40" />
-
       <div className="mx-auto grid min-h-[calc(100vh-6.5rem)] max-w-7xl items-center gap-10 px-4 py-16 lg:grid-cols-2 lg:py-20">
         <div>
           <Badge variant="outline" className="gap-1.5 px-3 py-1">

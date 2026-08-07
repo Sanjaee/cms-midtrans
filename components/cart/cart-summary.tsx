@@ -75,7 +75,7 @@ export function CartSummary() {
           </Button>
         </div>
         {coupon && (
-          <p className="mt-2 text-xs text-emerald-500">
+          <p className="mt-2 text-xs text-primary">
             ✓ Kupon {coupon.code} berlaku
           </p>
         )}
@@ -90,7 +90,7 @@ export function CartSummary() {
         </div>
         <div className="flex justify-between">
           <span className="text-muted-foreground">Diskon</span>
-          <span className="font-semibold text-emerald-500">
+          <span className="font-semibold text-primary">
             -{formatIDR(discount)}
           </span>
         </div>

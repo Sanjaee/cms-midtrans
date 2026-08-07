@@ -108,7 +108,7 @@ export default async function AdminOverviewPage() {
         <div className="rounded-2xl border bg-card p-6 shadow-sm">
           <div className="mb-4 flex items-center justify-between">
             <h2 className="font-semibold">Sales Bulanan</h2>
-            <span className="flex items-center gap-1 text-xs text-emerald-500">
+            <span className="flex items-center gap-1 text-xs text-primary">
               <TrendingUp className="h-3.5 w-3.5" /> 6 bulan terakhir
             </span>
           </div>

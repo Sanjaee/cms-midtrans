@@ -124,7 +124,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
           aria-label="Wishlist"
         >
           <Heart
-            className={cn("h-4 w-4", wished && "fill-rose-500 text-rose-500")}
+            className={cn("h-4 w-4", wished && "fill-foreground text-primary")}
           />
         </button>
       </div>

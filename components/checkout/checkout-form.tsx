@@ -251,7 +251,7 @@ export function CheckoutForm({
   return (
     <div className="space-y-6">
       {testMode && (
-        <div className="flex items-start gap-3 rounded-2xl border border-amber-500/40 bg-amber-500/10 p-4 text-sm text-amber-700 dark:text-amber-300">
+        <div className="flex items-start gap-3 rounded-2xl border border-border bg-muted p-4 text-sm text-foreground">
           <FlaskConical className="mt-0.5 h-4 w-4 shrink-0" />
           <div>
             <p className="font-semibold">Mode Uji Aktif</p>
@@ -321,7 +321,7 @@ export function CheckoutForm({
                       <span className="flex items-center gap-2 font-medium">
                         {a.label}
                         {a.isDefault && (
-                          <span className="rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-semibold text-emerald-500">
+                          <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold text-primary">
                             Utama
                           </span>
                         )}
@@ -420,7 +420,7 @@ export function CheckoutForm({
                         </span>
                         <span className="flex items-center gap-2">
                           {s.cost === 0 ? (
-                            <span className="text-xs font-semibold text-emerald-500">GRATIS</span>
+                            <span className="text-xs font-semibold text-primary">GRATIS</span>
                           ) : (
                             <span className="font-semibold">{formatIDR(s.cost)}</span>
                           )}
@@ -484,7 +484,7 @@ export function CheckoutForm({
                 <span className="text-muted-foreground">
                   Diskon ({coupon.code})
                 </span>
-                <span className="font-semibold text-emerald-500">
+                <span className="font-semibold text-primary">
                   -{formatIDR(couponDiscount)}
                 </span>
               </div>

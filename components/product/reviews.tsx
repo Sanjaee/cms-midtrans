@@ -54,7 +54,7 @@ export function ReviewsSection({
               className={cn(
                 "h-4 w-4",
                 i < Math.round(avg)
-                  ? "fill-amber-400 text-amber-400"
+                  ? "fill-foreground text-foreground"
                   : "text-muted-foreground/40",
               )}
             />
@@ -107,7 +107,7 @@ export function ReviewsSection({
                       defaultChecked={r === 5}
                       className="peer sr-only"
                     />
-                    <Star className="h-6 w-6 text-muted-foreground/40 transition-colors peer-checked:fill-amber-400 peer-checked:text-amber-400" />
+                    <Star className="h-6 w-6 text-muted-foreground/40 transition-colors peer-checked:fill-foreground peer-checked:text-foreground" />
                   </label>
                 ))}
               </div>
@@ -160,7 +160,7 @@ export function ReviewsSection({
                         className={cn(
                           "h-3.5 w-3.5",
                           i < r.rating
-                            ? "fill-amber-400 text-amber-400"
+                            ? "fill-foreground text-foreground"
                             : "text-muted-foreground/40",
                         )}
                       />

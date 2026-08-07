@@ -105,7 +105,7 @@ export default async function AdminOrderDetailPage({
             </table>
             <div className="mt-5 space-y-2 text-sm">
               <div className="flex justify-between"><span className="text-muted-foreground">Subtotal</span><span>{formatIDR(order.subtotal)}</span></div>
-              <div className="flex justify-between"><span className="text-muted-foreground">Diskon</span><span className="text-emerald-500">-{formatIDR(order.discount)}</span></div>
+              <div className="flex justify-between"><span className="text-muted-foreground">Diskon</span><span className="text-primary">-{formatIDR(order.discount)}</span></div>
               <div className="flex justify-between"><span className="text-muted-foreground">Ongkir</span><span>{formatIDR(order.shippingCost)}</span></div>
               <div className="flex justify-between border-t pt-2 text-base font-bold"><span>Total</span><span>{formatIDR(order.total)}</span></div>
             </div>

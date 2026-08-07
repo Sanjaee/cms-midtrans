@@ -111,14 +111,14 @@ export function AddToCart({ product }: AddToCartProps) {
         <Button
           variant="outline"
           size="icon"
-          className={cn("h-12 w-12", wished && "border-rose-500")}
+          className={cn("h-12 w-12", wished && "border-foreground")}
           onClick={() => {
             toggle(product.id);
             toast(wished ? "Dihapus dari wishlist" : "Ditambahkan ke wishlist");
           }}
           aria-label="Wishlist"
         >
-          <Heart className={cn("h-5 w-5", wished && "fill-rose-500 text-rose-500")} />
+          <Heart className={cn("h-5 w-5", wished && "fill-foreground text-primary")} />
         </Button>
       </div>
 

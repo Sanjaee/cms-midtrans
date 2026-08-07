@@ -34,7 +34,7 @@ export default function ForgotPasswordPage() {
           <div className="mb-4">
             <AlertSuccess>{state.success}</AlertSuccess>
             {state.devResetLink && (
-              <div className="mt-2 rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 text-xs text-amber-600 dark:text-amber-400">
+              <div className="mt-2 rounded-lg border border-border bg-muted p-3 text-xs text-foreground">
                 <p className="font-semibold mb-1">Mode pengembangan (SMTP belum dikonfigurasi):</p>
                 <a href={state.devResetLink} className="underline break-all">{state.devResetLink}</a>
               </div>

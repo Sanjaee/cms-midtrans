@@ -33,8 +33,8 @@ export default async function CheckoutSuccessPage({
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 text-center">
-      <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500/15">
-        <CheckCircle2 className="h-10 w-10 text-emerald-500" />
+      <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
+        <CheckCircle2 className="h-10 w-10 text-primary" />
       </div>
       <h1 className="mt-6 text-3xl font-bold">Pesanan Berhasil! 🎉</h1>
       <p className="mt-3 text-muted-foreground">
@@ -63,8 +63,8 @@ export default async function CheckoutSuccessPage({
             <span
               className={
                 orderRow.paymentStatus === "paid"
-                  ? "font-semibold text-emerald-500"
-                  : "font-semibold text-amber-500"
+                  ? "font-semibold text-primary"
+                  : "font-semibold text-primary"
               }
             >
               {orderRow.paymentStatus === "paid"

@@ -33,11 +33,11 @@ export default async function CheckoutFailedPage({
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 text-center">
-      <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-amber-500/15">
+      <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
         {pending ? (
-          <Clock className="h-10 w-10 text-amber-500" />
+          <Clock className="h-10 w-10 text-primary" />
         ) : (
-          <XCircle className="h-10 w-10 text-rose-500" />
+          <XCircle className="h-10 w-10 text-primary" />
         )}
       </div>
       <h1 className="mt-6 text-3xl font-bold">

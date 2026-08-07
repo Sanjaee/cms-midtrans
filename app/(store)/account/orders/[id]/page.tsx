@@ -165,7 +165,7 @@ export default async function OrderDetailPage({
           </div>
           <div className="flex justify-between">
             <span className="text-muted-foreground">Diskon</span>
-            <span className="text-emerald-500">-{formatIDR(order.discount)}</span>
+            <span className="text-primary">-{formatIDR(order.discount)}</span>
           </div>
           <div className="flex justify-between">
             <span className="text-muted-foreground">Ongkir</span>
