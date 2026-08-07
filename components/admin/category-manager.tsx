@@ -114,7 +114,7 @@ export function CategoryManager({ categories }: { categories: Category[] }) {
         </Button>
       </div>
 
-      <div className="rounded-2xl border bg-card soft-shadow">
+      <div className="rounded-2xl border bg-card shadow-sm">
         <Table>
           <TableHeader>
             <TableRow>

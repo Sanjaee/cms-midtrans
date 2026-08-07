@@ -48,7 +48,7 @@ export default async function OrdersPage() {
           <Link
             key={order.id}
             href={`/account/orders/${order.id}`}
-            className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border bg-card p-5 soft-shadow transition-all hover:shadow-lg"
+            className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border bg-card p-5 shadow-sm transition-all hover:shadow-lg"
           >
             <div>
               <p className="font-semibold">{order.orderNumber}</p>

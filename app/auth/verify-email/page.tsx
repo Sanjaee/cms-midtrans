@@ -21,7 +21,7 @@ export default async function VerifyEmailPage({
   }
 
   return (
-    <Card className="soft-shadow">
+    <Card className="shadow-sm">
       <CardHeader className="text-center">
         <CardTitle className="text-2xl">
           {success ? "Email Terverifikasi 🎉" : "Verifikasi Gagal"}

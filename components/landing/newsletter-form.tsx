@@ -42,10 +42,10 @@ export function NewsletterForm() {
           placeholder="Masukkan email Anda"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="h-12 bg-white/10 pl-11 text-white placeholder:text-white/60 focus:ring-white/40"
+          className="h-12 border-primary-foreground/30 bg-primary-foreground/10 pl-11 text-primary-foreground placeholder:text-primary-foreground/60 focus:ring-primary-foreground/40"
         />
       </div>
-      <Button size="lg" className="bg-white text-foreground hover:bg-white/90" disabled={loading}>
+      <Button size="lg" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90" disabled={loading}>
         {loading ? "Memproses..." : "Berlangganan"}
       </Button>
     </form>

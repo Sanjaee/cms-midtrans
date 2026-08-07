@@ -29,7 +29,7 @@ export default async function AccountPage() {
         {stats.map((s) => (
           <div
             key={s.label}
-            className="rounded-xl border bg-card p-4 text-center soft-shadow"
+            className="rounded-xl border bg-card p-4 text-center shadow-sm"
           >
             <p className="text-lg font-bold">{s.value}</p>
             <p className="text-xs text-muted-foreground">{s.label}</p>

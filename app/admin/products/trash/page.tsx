@@ -32,7 +32,7 @@ export default async function TrashPage() {
         </p>
       </div>
 
-      <div className="rounded-2xl border bg-card soft-shadow">
+      <div className="rounded-2xl border bg-card shadow-sm">
         <Table>
           <TableHeader>
             <TableRow>

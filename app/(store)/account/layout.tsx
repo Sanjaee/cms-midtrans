@@ -17,7 +17,7 @@ export default async function AccountLayout({
       <div className="grid gap-6 lg:grid-cols-[220px_1fr]">
         <aside>
           <div className="mb-4 hidden items-center gap-3 lg:flex">
-            <div className="bg-brand-gradient flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-white">
+            <div className="bg-primary flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-primary-foreground">
               {user.name.slice(0, 1).toUpperCase()}
             </div>
             <div>

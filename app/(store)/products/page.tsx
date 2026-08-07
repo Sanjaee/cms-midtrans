@@ -104,7 +104,7 @@ export default async function ProductsPage({
                     href={`/products?${params.toString()}`}
                     className={
                       page === n
-                        ? "bg-brand-gradient flex h-9 w-9 items-center justify-center rounded-full text-sm font-semibold text-white"
+                        ? "bg-primary flex h-9 w-9 items-center justify-center rounded-full text-sm font-semibold text-primary-foreground"
                         : "flex h-9 w-9 items-center justify-center rounded-full border text-sm hover:bg-accent"
                     }
                   >

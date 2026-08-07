@@ -15,11 +15,11 @@ export function FlashSaleSection({ products, endsAt }: FlashSaleProps) {
   if (!products.length) return null;
   return (
     <section className="relative overflow-hidden py-16">
-      <div className="absolute inset-0 -z-10 bg-brand-gradient opacity-10" />
+      <div className="absolute inset-0 -z-10 bg-primary opacity-10" />
       <div className="mx-auto max-w-7xl px-4">
         <div className="mb-10 flex flex-col items-center justify-between gap-4 sm:flex-row">
           <div className="flex items-center gap-4">
-            <div className="bg-brand-gradient flex h-12 w-12 items-center justify-center rounded-2xl text-white shadow-lg">
+            <div className="bg-primary flex h-12 w-12 items-center justify-center rounded-md text-primary-foreground shadow-sm">
               <Zap className="h-6 w-6" />
             </div>
             <div>

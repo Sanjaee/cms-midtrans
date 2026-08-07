@@ -60,7 +60,7 @@ export function FaqManager({ items }: { items: Faq[] }) {
 
       <div className="space-y-3">
         {items.map((f) => (
-          <div key={f.id} className="flex items-start justify-between gap-4 rounded-2xl border bg-card p-5 soft-shadow">
+          <div key={f.id} className="flex items-start justify-between gap-4 rounded-2xl border bg-card p-5 shadow-sm">
             <div>
               <p className="flex items-center gap-2 font-semibold">
                 <HelpCircle className="h-4 w-4 text-primary" /> {f.question}

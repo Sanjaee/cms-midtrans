@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { AnalyticsScripts } from "@/app/scripts";
 
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-nova",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
@@ -37,7 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="id" suppressHydrationWarning>
       <body
-        className={`${jakarta.variable} min-h-full font-sans antialiased`}
+        className={`${inter.variable} min-h-full font-sans antialiased`}
       >
         <Providers>{children}</Providers>
         <AnalyticsScripts />

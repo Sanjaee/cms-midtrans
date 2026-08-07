@@ -40,7 +40,7 @@ export default async function AdminNotificationsPage() {
           {rows.map((n) => (
             <div
               key={n.id}
-              className="flex items-start justify-between gap-4 rounded-2xl border bg-card p-4 soft-shadow"
+              className="flex items-start justify-between gap-4 rounded-2xl border bg-card p-4 shadow-sm"
             >
               <div>
                 <div className="flex items-center gap-2">

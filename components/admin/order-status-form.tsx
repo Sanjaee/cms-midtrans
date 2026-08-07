@@ -54,7 +54,7 @@ export function OrderStatusForm({
   };
 
   return (
-    <div className="rounded-2xl border bg-card p-6 soft-shadow">
+    <div className="rounded-2xl border bg-card p-6 shadow-sm">
       <h3 className="font-semibold">Update Status</h3>
       <div className="mt-4 space-y-3">
         <div className="space-y-2">

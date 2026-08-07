@@ -105,7 +105,7 @@ export default async function AdminOverviewPage() {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
-        <div className="rounded-2xl border bg-card p-6 soft-shadow">
+        <div className="rounded-2xl border bg-card p-6 shadow-sm">
           <div className="mb-4 flex items-center justify-between">
             <h2 className="font-semibold">Sales Bulanan</h2>
             <span className="flex items-center gap-1 text-xs text-emerald-500">
@@ -115,7 +115,7 @@ export default async function AdminOverviewPage() {
           <SalesChart data={monthly} />
         </div>
 
-        <div className="rounded-2xl border bg-card p-6 soft-shadow">
+        <div className="rounded-2xl border bg-card p-6 shadow-sm">
           <h2 className="mb-4 font-semibold">Produk Terlaris</h2>
           <div className="space-y-3">
             {topSelling.map((p, i) => (
@@ -147,7 +147,7 @@ export default async function AdminOverviewPage() {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        <div className="rounded-2xl border bg-card soft-shadow">
+        <div className="rounded-2xl border bg-card shadow-sm">
           <div className="flex items-center justify-between border-b px-6 py-4">
             <h2 className="font-semibold">Pesanan Terbaru</h2>
             <Link href="/admin/orders" className="flex items-center gap-1 text-xs text-primary hover:underline">
@@ -177,7 +177,7 @@ export default async function AdminOverviewPage() {
         </div>
 
         <div className="grid gap-6">
-          <div className="rounded-2xl border bg-card soft-shadow">
+          <div className="rounded-2xl border bg-card shadow-sm">
             <div className="border-b px-6 py-4">
               <h2 className="font-semibold">Pelanggan Terbaru</h2>
             </div>
@@ -204,7 +204,7 @@ export default async function AdminOverviewPage() {
             </div>
           </div>
 
-          <div className="rounded-2xl border bg-card soft-shadow">
+          <div className="rounded-2xl border bg-card shadow-sm">
             <div className="flex items-center justify-between border-b px-6 py-4">
               <h2 className="font-semibold">Aktivitas Terbaru</h2>
               <Link href="/admin/activity" className="text-xs text-primary hover:underline">

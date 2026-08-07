@@ -67,7 +67,7 @@ export default async function BlogPage({
           <Link
             key={p.id}
             href={`/blog/${p.slug}`}
-            className="group overflow-hidden rounded-2xl border bg-card soft-shadow transition-all hover:-translate-y-1 hover:shadow-lg"
+            className="group overflow-hidden rounded-2xl border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
           >
             <div className="relative aspect-[16/9] overflow-hidden">
               <Image

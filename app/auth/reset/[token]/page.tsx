@@ -31,7 +31,7 @@ export default function ResetPasswordPage({
   );
 
   return (
-    <Card className="soft-shadow">
+    <Card className="shadow-sm">
       <CardHeader className="text-center">
         <CardTitle className="text-2xl">Reset Password</CardTitle>
         <CardDescription>

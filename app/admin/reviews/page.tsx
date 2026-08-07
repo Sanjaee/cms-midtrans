@@ -45,7 +45,7 @@ export default async function AdminReviewsPage() {
 
       <div className="space-y-4">
         {rows.map((r) => (
-          <div key={r.id} className="rounded-2xl border bg-card p-5 soft-shadow">
+          <div key={r.id} className="rounded-2xl border bg-card p-5 shadow-sm">
             <div className="flex items-start justify-between gap-4">
               <div className="flex items-center gap-3">
                 <Avatar className="h-9 w-9">

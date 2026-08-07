@@ -152,7 +152,7 @@ export function SettingsForm({ settings }: { settings: Record<string, string> })
               type="checkbox"
               checked={form.maintenanceMode === "true"}
               onChange={(e) => set("maintenanceMode", e.target.checked ? "true" : "false")}
-              className="h-4 w-4 accent-orange-500"
+              className="h-4 w-4 accent-primary"
             />
             Aktifkan mode pemeliharaan
           </label>

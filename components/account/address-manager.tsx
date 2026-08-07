@@ -124,7 +124,7 @@ export function AddressManager({ addresses }: { addresses: Address[] }) {
                 <Input id="postalCode" name="postalCode" />
               </div>
               <label className="flex items-center gap-2 text-sm sm:col-span-2">
-                <input type="checkbox" name="isDefault" className="h-4 w-4 accent-orange-500" />
+                <input type="checkbox" name="isDefault" className="h-4 w-4 accent-primary" />
                 Jadikan alamat utama
               </label>
               <div className="flex gap-2 sm:col-span-2">
@@ -145,13 +145,13 @@ export function AddressManager({ addresses }: { addresses: Address[] }) {
         <div
           key={a.id}
           className={cn(
-            "rounded-2xl border bg-card p-5 soft-shadow",
+            "rounded-2xl border bg-card p-5 shadow-sm",
             a.isDefault && "border-primary/50",
           )}
         >
           <div className="flex items-start justify-between">
             <div className="flex items-start gap-3">
-              <div className="bg-brand-gradient flex h-10 w-10 items-center justify-center rounded-lg text-white">
+              <div className="bg-primary flex h-10 w-10 items-center justify-center rounded-lg text-primary-foreground">
                 <Home className="h-5 w-5" />
               </div>
               <div>

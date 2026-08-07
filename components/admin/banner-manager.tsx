@@ -125,7 +125,7 @@ export function BannerManager({ banners }: { banners: Banner[] }) {
         </Button>
       </div>
 
-      <div className="rounded-2xl border bg-card soft-shadow">
+      <div className="rounded-2xl border bg-card shadow-sm">
         <Table>
           <TableHeader>
             <TableRow>

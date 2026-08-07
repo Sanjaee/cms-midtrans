@@ -49,7 +49,7 @@ export default async function CheckoutFailedPage({
           : "Pembayaran Anda tidak berhasil. Jangan khawatir, pesanan Anda tetap tersimpan dan dapat dibayar ulang."}
       </p>
 
-      <div className="mx-auto mt-8 max-w-md rounded-2xl border bg-card p-6 text-left soft-shadow">
+      <div className="mx-auto mt-8 max-w-md rounded-2xl border bg-card p-6 text-left shadow-sm">
         <div className="space-y-2 text-sm">
           <div className="flex justify-between">
             <span className="text-muted-foreground">No. Pesanan</span>

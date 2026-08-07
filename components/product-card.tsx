@@ -72,7 +72,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
     <Link
       href={`/products/${product.slug}`}
       className={cn(
-        "group relative flex flex-col overflow-hidden rounded-xl border bg-card soft-shadow transition-all duration-300 hover:-translate-y-1 hover:shadow-xl",
+        "group relative flex flex-col overflow-hidden rounded-xl border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl",
         className,
       )}
     >
@@ -118,7 +118,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
             toast(wished ? "Dihapus dari wishlist" : "Ditambahkan ke wishlist");
           }}
           className={cn(
-            "absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full glass text-white transition-all md:opacity-0 md:group-hover:opacity-100",
+            "absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition-all md:opacity-0 md:group-hover:opacity-100",
             wished && "md:opacity-100",
           )}
           aria-label="Wishlist"
@@ -153,7 +153,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
           <button
             onClick={handleAdd}
             disabled={outOfStock}
-            className="bg-brand-gradient flex h-9 w-9 items-center justify-center rounded-full text-white shadow-lg shadow-orange-500/20 transition-transform hover:scale-110 disabled:opacity-40"
+            className="bg-primary flex h-9 w-9 items-center justify-center rounded-full text-primary-foreground shadow-sm transition-transform hover:scale-110 disabled:opacity-40"
             aria-label="Tambah ke keranjang"
           >
             <Plus className="h-4 w-4" />

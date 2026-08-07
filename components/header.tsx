@@ -65,8 +65,8 @@ export function Header({ user, siteName }: HeaderProps) {
 
   return (
     <header className="sticky top-0 z-40">
-      <div className="bg-brand-gradient overflow-hidden">
-        <div className="animate-marquee flex whitespace-nowrap py-1.5 text-xs font-medium text-white">
+      <div className="bg-primary overflow-hidden">
+        <div className="animate-marquee flex whitespace-nowrap py-1.5 text-xs font-medium text-primary-foreground">
           {Array.from({ length: 4 }).map((_, i) => (
             <span key={i} className="flex items-center gap-8 pr-8">
               <span>GRATIS ONGKIR min. belanja Rp200.000</span>
@@ -80,7 +80,7 @@ export function Header({ user, siteName }: HeaderProps) {
         </div>
       </div>
 
-      <div className="glass border-b">
+      <div className="bg-background/95 backdrop-blur-sm border-b">
         <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4">
           <Button
             variant="ghost"
@@ -93,7 +93,7 @@ export function Header({ user, siteName }: HeaderProps) {
           </Button>
 
           <Link href="/" className="flex items-center gap-2">
-            <div className="bg-brand-gradient flex h-8 w-8 items-center justify-center rounded-lg text-white">
+            <div className="bg-primary flex h-8 w-8 items-center justify-center rounded-lg text-primary-foreground">
               <Sparkles className="h-4 w-4" />
             </div>
             <span className="hidden text-lg font-bold tracking-tight sm:block">
@@ -112,7 +112,7 @@ export function Header({ user, siteName }: HeaderProps) {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "rounded-full px-4 py-2 text-sm font-medium transition-colors hover:bg-accent",
+                    "rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent",
                     active && "bg-accent text-foreground",
                   )}
                 >
@@ -146,7 +146,7 @@ export function Header({ user, siteName }: HeaderProps) {
             >
               <Heart className="h-4 w-4" />
               {wishlistCount > 0 && (
-                <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-brand-gradient text-[10px] font-bold text-white">
+                <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
                   {wishlistCount}
                 </span>
               )}
@@ -160,7 +160,7 @@ export function Header({ user, siteName }: HeaderProps) {
             >
               <ShoppingBag className="h-4 w-4" />
               {cartCount > 0 && (
-                <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-brand-gradient text-[10px] font-bold text-white">
+                <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
                   {cartCount}
                 </span>
               )}
@@ -227,14 +227,14 @@ export function Header({ user, siteName }: HeaderProps) {
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             onClick={() => setMobileOpen(false)}
           />
-          <div className="glass absolute inset-y-0 left-0 flex w-72 flex-col gap-2 border-r p-4 animate-in slide-in-from-left">
+          <div className="bg-background/95 backdrop-blur-sm absolute inset-y-0 left-0 flex w-72 flex-col gap-2 border-r p-4 animate-in slide-in-from-left">
             <div className="flex items-center justify-between">
               <Link
                 href="/"
                 className="flex items-center gap-2"
                 onClick={() => setMobileOpen(false)}
               >
-                <div className="bg-brand-gradient flex h-8 w-8 items-center justify-center rounded-lg text-white">
+                <div className="bg-primary flex h-8 w-8 items-center justify-center rounded-lg text-primary-foreground">
                   <Sparkles className="h-4 w-4" />
                 </div>
                 <span className="text-lg font-bold">{siteName}</span>

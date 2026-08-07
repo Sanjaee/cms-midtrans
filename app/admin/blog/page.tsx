@@ -50,7 +50,7 @@ export default async function AdminBlogPage({
         <Button type="submit" variant="outline" size="icon"><Search className="h-4 w-4" /></Button>
       </form>
 
-      <div className="rounded-2xl border bg-card soft-shadow">
+      <div className="rounded-2xl border bg-card shadow-sm">
         <Table>
           <TableHeader>
             <TableRow>

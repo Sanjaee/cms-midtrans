@@ -70,7 +70,7 @@ export function AdminSidebar({
       >
         <div className="flex h-16 items-center justify-between border-b px-5">
           <Link href="/admin" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-            <div className="bg-brand-gradient flex h-8 w-8 items-center justify-center rounded-lg text-white">
+            <div className="bg-primary flex h-8 w-8 items-center justify-center rounded-lg text-primary-foreground">
               <Sparkles className="h-4 w-4" />
             </div>
             <div>
@@ -95,7 +95,7 @@ export function AdminSidebar({
                 onClick={() => setOpen(false)}
                 className={cn(
                   "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
-                  active && "bg-brand-gradient text-white hover:bg-brand-gradient hover:text-white",
+                  active && "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground",
                 )}
               >
                 <item.icon className="h-4 w-4" />

@@ -25,7 +25,7 @@ export default async function AdminActivityPage() {
         <p className="text-sm text-muted-foreground">Riwayat aktivitas sistem dan pengguna.</p>
       </div>
 
-      <div className="rounded-2xl border bg-card soft-shadow">
+      <div className="rounded-2xl border bg-card shadow-sm">
         <Table>
           <TableHeader>
             <TableRow>

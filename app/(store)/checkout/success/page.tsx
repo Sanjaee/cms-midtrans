@@ -49,7 +49,7 @@ export default async function CheckoutSuccessPage({
         .
       </p>
 
-      <div className="mx-auto mt-8 max-w-md rounded-2xl border bg-card p-6 text-left soft-shadow">
+      <div className="mx-auto mt-8 max-w-md rounded-2xl border bg-card p-6 text-left shadow-sm">
         <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
           Ringkasan Pesanan
         </h3>

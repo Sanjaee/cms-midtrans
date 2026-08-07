@@ -27,7 +27,7 @@ export default async function CategoriesPage() {
           <Link
             key={c.id}
             href={`/categories/${c.slug}`}
-            className="group relative aspect-[4/3] overflow-hidden rounded-2xl border soft-shadow"
+            className="group relative aspect-[4/3] overflow-hidden rounded-2xl border shadow-sm"
           >
             <Image
               src={c.image || `/placeholders/${(i % 10) + 1}.svg`}

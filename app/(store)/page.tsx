@@ -26,7 +26,7 @@ import {
   getFaqs,
   getPosts,
 } from "@/lib/queries";
-import { Hero } from "@/components/landing/hero";
+import { Hero195 } from "@/components/ui/hero-195";
 import { SectionHeading } from "@/components/landing/section-heading";
 import { ProductTabsSection } from "@/components/landing/product-tabs";
 import { FlashSaleSection } from "@/components/landing/flash-sale";
@@ -101,7 +101,7 @@ export default async function HomePage() {
 
   return (
     <div>
-      <Hero />
+      <Hero195 />
 
       {promo && (
         <section className="mx-auto max-w-7xl px-4">
@@ -109,20 +109,20 @@ export default async function HomePage() {
             href={promo.link || "/products"}
             className="group relative block overflow-hidden rounded-2xl"
           >
-            <div className="bg-brand-gradient relative flex h-32 items-center justify-between overflow-hidden px-8 sm:h-40 sm:px-14">
-              <div className="absolute inset-0 opacity-20 [background:radial-gradient(circle_at_70%_30%,white,transparent_50%)]" />
+            <div className="bg-primary relative flex h-32 items-center justify-between overflow-hidden px-8 sm:h-40 sm:px-14">
+              <div className="absolute inset-0 opacity-20 [background:radial-gradient(circle_at_70%_30%,hsl(0 0% 98%),transparent_50%)]" />
               <div className="relative z-10">
-                <p className="text-xs font-semibold uppercase tracking-widest text-white/70">
+                <p className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/70">
                   Promo Spesial
                 </p>
-                <h3 className="mt-1 text-xl font-bold text-white sm:text-3xl">
+                <h3 className="mt-1 text-xl font-bold text-primary-foreground sm:text-3xl">
                   {promo.title}
                 </h3>
                 {promo.subtitle && (
-                  <p className="mt-1 text-sm text-white/80">{promo.subtitle}</p>
+                  <p className="mt-1 text-sm text-primary-foreground/80">{promo.subtitle}</p>
                 )}
               </div>
-              <span className="relative z-10 hidden rounded-full bg-white/20 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur transition-transform group-hover:scale-105 sm:block">
+              <span className="relative z-10 hidden rounded-full bg-primary-foreground/20 px-5 py-2.5 text-sm font-semibold text-primary-foreground backdrop-blur transition-transform group-hover:scale-105 sm:block">
                 Cek Sekarang →
               </span>
             </div>
@@ -150,7 +150,7 @@ export default async function HomePage() {
               <Link
                 key={c.id}
                 href={`/categories/${c.slug}`}
-                className="group relative aspect-[4/3] overflow-hidden rounded-xl border soft-shadow"
+                className="group relative aspect-[4/3] overflow-hidden rounded-xl border shadow-sm"
               >
                 <Image
                   src={c.image || `/placeholders/${(i % 10) + 1}.svg`}
@@ -180,9 +180,9 @@ export default async function HomePage() {
             {benefits.map((b) => (
               <div
                 key={b.title}
-                className="group rounded-2xl border bg-card p-6 soft-shadow transition-all hover:-translate-y-1 hover:shadow-lg"
+                className="group rounded-2xl border bg-card p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
               >
-                <div className="bg-brand-gradient mb-4 flex h-12 w-12 items-center justify-center rounded-xl text-white shadow-lg shadow-orange-500/20">
+                <div className="bg-primary mb-4 flex h-12 w-12 items-center justify-center rounded-md text-primary-foreground shadow-sm">
                   <b.icon className="h-6 w-6" />
                 </div>
                 <h3 className="font-semibold">{b.title}</h3>
@@ -204,7 +204,7 @@ export default async function HomePage() {
             {testimonials.slice(0, 6).map((t) => (
               <div
                 key={t.id}
-                className="relative rounded-2xl border bg-card p-6 soft-shadow"
+                className="relative rounded-2xl border bg-card p-6 shadow-sm"
               >
                 <Quote className="h-6 w-6 text-primary/40" />
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
@@ -268,7 +268,7 @@ export default async function HomePage() {
               <Link
                 key={p.id}
                 href={`/blog/${p.slug}`}
-                className="group overflow-hidden rounded-2xl border bg-card soft-shadow transition-all hover:-translate-y-1 hover:shadow-lg"
+                className="group overflow-hidden rounded-2xl border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="relative aspect-[16/9] overflow-hidden">
                   <Image
@@ -279,7 +279,7 @@ export default async function HomePage() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     unoptimized
                   />
-                  <Badge className="absolute left-3 top-3 glass text-white">
+                  <Badge className="absolute left-3 top-3 bg-black/60 text-white backdrop-blur-sm">
                     {p.categoryId ? "Blog" : "Tips"}
                   </Badge>
                 </div>
@@ -298,13 +298,13 @@ export default async function HomePage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-16">
-        <div className="bg-brand-gradient relative overflow-hidden rounded-3xl px-6 py-14 text-center sm:px-14">
-          <div className="absolute inset-0 opacity-20 [background:radial-gradient(circle_at_20%_20%,white,transparent_40%),radial-gradient(circle_at_80%_80%,white,transparent_40%)]" />
+        <div className="bg-primary relative overflow-hidden rounded-3xl px-6 py-14 text-center sm:px-14">
+          <div className="absolute inset-0 opacity-20 [background:radial-gradient(circle_at_20%_20%,hsl(0 0% 98%),transparent_40%),radial-gradient(circle_at_80%_80%,hsl(0 0% 98%),transparent_40%)]" />
           <div className="relative z-10">
-            <h2 className="text-2xl font-bold text-white sm:text-3xl">
+            <h2 className="text-2xl font-bold text-primary-foreground sm:text-3xl">
               Dapatkan Update & Diskon Eksklusif
             </h2>
-            <p className="mx-auto mt-2 max-w-md text-sm text-white/80">
+            <p className="mx-auto mt-2 max-w-md text-sm text-primary-foreground/80">
               Berlangganan newsletter kami untuk mendapatkan info produk baru
               dan kode promo eksklusif.
             </p>
@@ -365,9 +365,9 @@ export default async function HomePage() {
               ].map((c) => (
                 <div
                   key={c.label}
-                  className="flex items-center gap-4 rounded-2xl border bg-card p-5 soft-shadow"
+                  className="flex items-center gap-4 rounded-2xl border bg-card p-5 shadow-sm"
                 >
-                  <div className="bg-brand-gradient flex h-11 w-11 items-center justify-center rounded-xl text-white">
+                  <div className="bg-primary flex h-11 w-11 items-center justify-center rounded-xl text-primary-foreground">
                     <c.icon className="h-5 w-5" />
                   </div>
                   <div>
@@ -379,8 +379,8 @@ export default async function HomePage() {
                 </div>
               ))}
             </div>
-            <div className="flex flex-col items-center justify-center rounded-2xl border bg-card p-8 text-center soft-shadow">
-              <div className="bg-brand-gradient flex h-16 w-16 items-center justify-center rounded-full text-white">
+            <div className="flex flex-col items-center justify-center rounded-2xl border bg-card p-8 text-center shadow-sm">
+              <div className="bg-primary flex h-16 w-16 items-center justify-center rounded-full text-primary-foreground">
                 <MessageCircle className="h-8 w-8" />
               </div>
               <h3 className="mt-4 text-lg font-semibold">
@@ -394,7 +394,7 @@ export default async function HomePage() {
                 href="https://wa.me/6281234567890"
                 target="_blank"
                 rel="noreferrer"
-                className="mt-5 inline-flex items-center gap-2 rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-500/30 transition-transform hover:scale-105"
+                className="mt-5 inline-flex items-center gap-2 rounded-full bg-emerald-500 px-6 py-3 text-sm font-semibold text-white shadow-md transition-transform hover:scale-105"
               >
                 <MessageCircle className="h-4 w-4" /> Chat WhatsApp
               </a>

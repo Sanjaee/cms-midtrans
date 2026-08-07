@@ -267,9 +267,9 @@ export function CheckoutForm({
 
       <form onSubmit={submit} className="grid gap-8 lg:grid-cols-[1fr_380px]">
       <div className="space-y-6">
-        <section className="rounded-2xl border bg-card p-6 soft-shadow">
+        <section className="rounded-2xl border bg-card p-6 shadow-sm">
           <h3 className="flex items-center gap-2 font-bold">
-            <span className="bg-brand-gradient flex h-7 w-7 items-center justify-center rounded-full text-xs text-white">1</span>
+            <span className="bg-primary flex h-7 w-7 items-center justify-center rounded-full text-xs text-primary-foreground">1</span>
             <User className="h-4 w-4 text-primary" /> Data Pembeli
           </h3>
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -288,9 +288,9 @@ export function CheckoutForm({
           </div>
         </section>
 
-        <section className="rounded-2xl border bg-card p-6 soft-shadow">
+        <section className="rounded-2xl border bg-card p-6 shadow-sm">
           <h3 className="flex items-center gap-2 font-bold">
-            <span className="bg-brand-gradient flex h-7 w-7 items-center justify-center rounded-full text-xs text-white">2</span>
+            <span className="bg-primary flex h-7 w-7 items-center justify-center rounded-full text-xs text-primary-foreground">2</span>
             <MapPin className="h-4 w-4 text-primary" /> Alamat Pengiriman
           </h3>
 
@@ -315,7 +315,7 @@ export function CheckoutForm({
                       name="savedAddress"
                       checked={selectedAddressId === a.id}
                       onChange={() => applyAddress(a)}
-                      className="mt-0.5 h-4 w-4 accent-orange-500"
+                      className="mt-0.5 h-4 w-4 accent-primary"
                     />
                     <span className="min-w-0">
                       <span className="flex items-center gap-2 font-medium">
@@ -377,9 +377,9 @@ export function CheckoutForm({
           </p>
         </section>
 
-        <section className="rounded-2xl border bg-card p-6 soft-shadow">
+        <section className="rounded-2xl border bg-card p-6 shadow-sm">
           <h3 className="flex items-center gap-2 font-bold">
-            <span className="bg-brand-gradient flex h-7 w-7 items-center justify-center rounded-full text-xs text-white">3</span>
+            <span className="bg-primary flex h-7 w-7 items-center justify-center rounded-full text-xs text-primary-foreground">3</span>
             <Truck className="h-4 w-4 text-primary" /> Pilih Kurir
           </h3>
           <div className="mt-4 space-y-3">
@@ -400,7 +400,7 @@ export function CheckoutForm({
                       setCourierId(courier.id);
                       setServiceId("");
                     }}
-                    className="h-4 w-4 accent-orange-500"
+                    className="h-4 w-4 accent-primary"
                   />
                 </label>
                 {courierId === courier.id && (
@@ -430,7 +430,7 @@ export function CheckoutForm({
                             value={s.id}
                             checked={serviceId === s.id}
                             onChange={() => setServiceId(s.id)}
-                            className="h-4 w-4 accent-orange-500"
+                            className="h-4 w-4 accent-primary"
                           />
                         </span>
                       </label>
@@ -444,7 +444,7 @@ export function CheckoutForm({
       </div>
 
       <div>
-        <div className="rounded-2xl border bg-card p-6 soft-shadow lg:sticky lg:top-24">
+        <div className="rounded-2xl border bg-card p-6 shadow-sm lg:sticky lg:top-24">
           <h3 className="flex items-center gap-2 font-bold">
             <CreditCard className="h-4 w-4 text-primary" /> Ringkasan Belanja
           </h3>

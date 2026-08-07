@@ -22,7 +22,7 @@ export default function ForgotPasswordPage() {
   const [state, action, pending] = useActionState(forgotPasswordAction, {});
 
   return (
-    <Card className="soft-shadow">
+    <Card className="shadow-sm">
       <CardHeader className="text-center">
         <CardTitle className="text-2xl">Lupa Password</CardTitle>
         <CardDescription>

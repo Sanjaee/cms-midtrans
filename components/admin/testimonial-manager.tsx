@@ -68,7 +68,7 @@ export function TestimonialManager({ items }: { items: Testimonial[] }) {
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {items.map((t) => (
-          <div key={t.id} className="rounded-2xl border bg-card p-5 soft-shadow">
+          <div key={t.id} className="rounded-2xl border bg-card p-5 shadow-sm">
             <Quote className="h-5 w-5 text-primary/40" />
             <p className="mt-2 text-sm text-muted-foreground line-clamp-3">
               &ldquo;{t.content}&rdquo;

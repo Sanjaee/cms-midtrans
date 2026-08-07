@@ -61,7 +61,7 @@ export function SearchCommand() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="flex h-10 w-full max-w-xs items-center gap-2 rounded-full border border-input bg-card/40 px-4 text-sm text-muted-foreground transition-colors hover:bg-accent"
+        className="flex h-10 w-full max-w-xs items-center gap-2 rounded-md border border-input bg-background px-4 text-sm text-muted-foreground transition-colors hover:bg-accent"
       >
         <Search className="h-4 w-4" />
         <span className="flex-1 text-left">Cari produk, artikel...</span>

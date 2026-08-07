@@ -45,7 +45,7 @@ export function ReviewsSection({
 
   return (
     <div className="grid gap-8 lg:grid-cols-[280px_1fr]">
-      <div className="rounded-2xl border bg-card p-6 text-center soft-shadow">
+      <div className="rounded-2xl border bg-card p-6 text-center shadow-sm">
         <p className="text-4xl font-bold">{avg.toFixed(1)}</p>
         <div className="mt-2 flex justify-center">
           {Array.from({ length: 5 }).map((_, i) => (
@@ -82,7 +82,7 @@ export function ReviewsSection({
         {showForm && (
           <form
             action={action}
-            className="mb-6 rounded-2xl border bg-card p-5 soft-shadow"
+            className="mb-6 rounded-2xl border bg-card p-5 shadow-sm"
           >
             <input type="hidden" name="productId" value={productId} />
             <h4 className="font-semibold">Tulis Ulasan Anda</h4>
@@ -134,7 +134,7 @@ export function ReviewsSection({
             {reviews.map((r) => (
               <div
                 key={r.id}
-                className="rounded-2xl border bg-card p-5 soft-shadow"
+                className="rounded-2xl border bg-card p-5 shadow-sm"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">

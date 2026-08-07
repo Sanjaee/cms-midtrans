@@ -6,9 +6,9 @@ export function MaintenanceScreen() {
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center px-4 text-center">
       <div className="absolute inset-0 -z-10">
-        <div className="bg-brand-gradient absolute left-1/4 top-0 h-80 w-80 rounded-full opacity-20 blur-[120px]" />
+        <div className="bg-primary absolute left-1/4 top-0 h-80 w-80 rounded-full opacity-20 blur-[120px]" />
       </div>
-      <div className="bg-brand-gradient flex h-16 w-16 items-center justify-center rounded-2xl text-white">
+      <div className="bg-primary flex h-16 w-16 items-center justify-center rounded-2xl text-primary-foreground">
         <Sparkles className="h-8 w-8" />
       </div>
       <h1 className="mt-6 text-3xl font-bold">Sedang Pemeliharaan</h1>

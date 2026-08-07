@@ -19,7 +19,7 @@ export function CartItems() {
         return (
           <div
             key={item.productId}
-            className="flex gap-4 rounded-2xl border bg-card p-4 soft-shadow"
+            className="flex gap-4 rounded-2xl border bg-card p-4 shadow-sm"
           >
             <Link
               href={`/products/${item.slug}`}

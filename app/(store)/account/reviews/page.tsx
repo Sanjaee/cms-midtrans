@@ -56,7 +56,7 @@ export default async function MyReviewsPage() {
 
       <div className="space-y-4">
         {rows.map((r) => (
-          <div key={r.id} className="rounded-2xl border bg-card p-5 soft-shadow">
+          <div key={r.id} className="rounded-2xl border bg-card p-5 shadow-sm">
             <div className="flex items-start justify-between gap-4">
               <Link href={`/products/${r.productSlug || ""}`} className="flex items-center gap-3">
                 <Image

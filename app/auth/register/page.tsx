@@ -34,7 +34,7 @@ function RegisterForm() {
   const [state, action, pending] = useActionState(registerAction, {});
 
   return (
-    <Card className="soft-shadow">
+    <Card className="shadow-sm">
       <CardHeader className="text-center">
         <CardTitle className="text-2xl">Buat Akun</CardTitle>
         <CardDescription>

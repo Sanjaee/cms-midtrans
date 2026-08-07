@@ -34,7 +34,7 @@ function LoginForm() {
   const [state, action, pending] = useActionState(loginAction, {});
 
   return (
-    <Card className="soft-shadow">
+    <Card className="shadow-sm">
       <CardHeader className="text-center">
         <CardTitle className="text-2xl">Selamat Datang</CardTitle>
         <CardDescription>

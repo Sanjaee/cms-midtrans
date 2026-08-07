@@ -174,7 +174,7 @@ export function FilterSidebar({ categories }: { categories: Category[] }) {
             className="absolute inset-0 bg-black/50"
             onClick={() => setOpen(false)}
           />
-          <div className="glass absolute inset-y-0 right-0 w-80 overflow-y-auto p-5 animate-in slide-in-from-right">
+          <div className="bg-background/95 backdrop-blur-sm absolute inset-y-0 right-0 w-80 overflow-y-auto p-5 animate-in slide-in-from-right">
             <button
               onClick={() => setOpen(false)}
               className="absolute right-4 top-4"

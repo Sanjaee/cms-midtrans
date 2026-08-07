@@ -38,7 +38,7 @@ export function AccountNav({ isAdmin }: { isAdmin: boolean }) {
             href={link.href}
             className={cn(
               "flex shrink-0 items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors hover:bg-accent",
-              active && "bg-brand-gradient text-white hover:bg-brand-gradient",
+              active && "bg-primary text-primary-foreground hover:bg-primary",
             )}
           >
             <link.icon className="h-4 w-4" />

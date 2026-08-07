@@ -22,14 +22,13 @@ export function StatCard({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-xl border bg-card p-5 soft-shadow",
+        "rounded-lg border bg-card p-5 text-card-foreground shadow-sm",
         className,
       )}
     >
-      <div className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-brand-gradient opacity-10 blur-2xl" />
       <div className="flex items-center justify-between">
         <p className="text-sm font-medium text-muted-foreground">{label}</p>
-        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-gradient/10 text-primary">
+        <div className="flex h-9 w-9 items-center justify-center rounded-md border bg-muted text-muted-foreground">
           {icon}
         </div>
       </div>

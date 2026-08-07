@@ -74,7 +74,7 @@ export default async function AdminProductsPage({
         </Button>
       </form>
 
-      <div className="rounded-2xl border bg-card soft-shadow">
+      <div className="rounded-2xl border bg-card shadow-sm">
         <Table>
           <TableHeader>
             <TableRow>

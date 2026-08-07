@@ -25,7 +25,7 @@ export function Footer({ settings }: FooterProps) {
         <div className="grid gap-10 md:grid-cols-4">
           <div>
             <div className="flex items-center gap-2">
-              <div className="bg-brand-gradient flex h-9 w-9 items-center justify-center rounded-lg text-white">
+              <div className="bg-primary flex h-9 w-9 items-center justify-center rounded-lg text-primary-foreground">
                 <Sparkles className="h-4 w-4" />
               </div>
               <span className="text-lg font-bold">{settings.siteName}</span>

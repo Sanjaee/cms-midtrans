@@ -199,7 +199,7 @@ export default async function ProductDetailPage({
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="description" className="rounded-2xl border bg-card p-6 soft-shadow">
+          <TabsContent value="description" className="rounded-2xl border bg-card p-6 shadow-sm">
             <div
               className="prose prose-sm max-w-none dark:prose-invert prose-headings:font-semibold"
               dangerouslySetInnerHTML={{
@@ -208,7 +208,7 @@ export default async function ProductDetailPage({
             />
           </TabsContent>
 
-          <TabsContent value="specs" className="rounded-2xl border bg-card soft-shadow">
+          <TabsContent value="specs" className="rounded-2xl border bg-card shadow-sm">
             {product.specs && Object.keys(product.specs).length ? (
               <table className="w-full text-sm">
                 <tbody>

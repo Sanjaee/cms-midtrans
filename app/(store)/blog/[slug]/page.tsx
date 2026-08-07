@@ -134,7 +134,7 @@ export default async function BlogPostPage({
 
         <aside className="space-y-6">
           {toc.length > 0 && (
-            <div className="sticky top-24 rounded-2xl border bg-card p-5 soft-shadow">
+            <div className="sticky top-24 rounded-2xl border bg-card p-5 shadow-sm">
               <h3 className="text-sm font-semibold uppercase tracking-wider">Daftar Isi</h3>
               <nav className="mt-3 space-y-2 text-sm">
                 {toc.map((t) => (
@@ -160,7 +160,7 @@ export default async function BlogPostPage({
               <Link
                 key={p.id}
                 href={`/blog/${p.slug}`}
-                className="group overflow-hidden rounded-2xl border bg-card soft-shadow transition-all hover:-translate-y-1 hover:shadow-lg"
+                className="group overflow-hidden rounded-2xl border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="relative aspect-[16/9] overflow-hidden">
                   <Image

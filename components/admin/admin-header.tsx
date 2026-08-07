@@ -39,7 +39,7 @@ export function AdminHeader({
   const unread = notifications.filter((n) => !n.read).length;
 
   return (
-    <header className="glass sticky top-0 z-30 flex h-16 items-center gap-3 border-b px-4">
+    <header className="bg-background/95 backdrop-blur-sm sticky top-0 z-30 flex h-16 items-center gap-3 border-b px-4">
       <Button
         variant="ghost"
         size="icon"

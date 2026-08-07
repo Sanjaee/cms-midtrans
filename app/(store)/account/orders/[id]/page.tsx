@@ -53,10 +53,10 @@ export default async function OrderDetailPage({
         <PrintButton />
       </div>
 
-      <div id="invoice" className="mt-6 rounded-2xl border bg-card p-6 soft-shadow">
+      <div id="invoice" className="mt-6 rounded-2xl border bg-card p-6 shadow-sm">
         <div className="flex flex-wrap items-start justify-between gap-4 border-b pb-5">
           <div className="flex items-center gap-3">
-            <div className="bg-brand-gradient flex h-10 w-10 items-center justify-center rounded-lg text-white">
+            <div className="bg-primary flex h-10 w-10 items-center justify-center rounded-lg text-white">
               <Sparkles className="h-5 w-5" />
             </div>
             <div>

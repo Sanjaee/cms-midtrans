@@ -41,10 +41,10 @@ export default async function AdminOrderDetailPage({
 
       <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
         <div id="invoice" className="space-y-6">
-          <div className="rounded-2xl border bg-card p-6 soft-shadow">
+          <div className="rounded-2xl border bg-card p-6 shadow-sm">
             <div className="flex flex-wrap items-start justify-between gap-4 border-b pb-5">
               <div className="flex items-center gap-3">
-                <div className="bg-brand-gradient flex h-10 w-10 items-center justify-center rounded-lg text-white">
+                <div className="bg-primary flex h-10 w-10 items-center justify-center rounded-lg text-white">
                   <Sparkles className="h-5 w-5" />
                 </div>
                 <div>
@@ -112,7 +112,7 @@ export default async function AdminOrderDetailPage({
           </div>
 
           {payments.length > 0 && (
-            <div className="rounded-2xl border bg-card p-6 soft-shadow">
+            <div className="rounded-2xl border bg-card p-6 shadow-sm">
               <h3 className="font-semibold">Riwayat Pembayaran</h3>
               <div className="mt-3 space-y-2">
                 {payments.map((p) => (
@@ -138,7 +138,7 @@ export default async function AdminOrderDetailPage({
 
         <div className="no-print space-y-6">
           <OrderStatusForm orderId={order.id} currentStatus={order.status} currentTracking={order.trackingNumber} />
-          <div className="rounded-2xl border bg-card p-6 soft-shadow">
+          <div className="rounded-2xl border bg-card p-6 shadow-sm">
             <h3 className="font-semibold">Informasi Pelanggan</h3>
             <div className="mt-3 space-y-2 text-sm">
               <p><span className="text-muted-foreground">Nama:</span> {order.customerName}</p>

@@ -23,8 +23,8 @@ export function SalesChart({
       <AreaChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
         <defs>
           <linearGradient id="rev" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#f59e0b" stopOpacity={0.4} />
-            <stop offset="95%" stopColor="#f43f5e" stopOpacity={0} />
+            <stop offset="5%" stopColor="hsl(173 58% 39%)" stopOpacity={0.35} />
+            <stop offset="95%" stopColor="hsl(173 58% 39%)" stopOpacity={0} />
           </linearGradient>
         </defs>
         <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
@@ -45,7 +45,7 @@ export function SalesChart({
             fontSize: 12,
           }}
         />
-        <Area type="monotone" dataKey="revenue" stroke="#f59e0b" strokeWidth={2} fill="url(#rev)" />
+        <Area type="monotone" dataKey="revenue" stroke="hsl(173 58% 39%)" strokeWidth={2} fill="url(#rev)" />
       </AreaChart>
     </ResponsiveContainer>
   );
@@ -70,13 +70,7 @@ export function OrdersBarChart({
             fontSize: 12,
           }}
         />
-        <Bar dataKey="orders" fill="url(#barGrad)" radius={[6, 6, 0, 0]} />
-        <defs>
-          <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#8b5cf6" />
-            <stop offset="100%" stopColor="#6366f1" />
-          </linearGradient>
-        </defs>
+        <Bar dataKey="orders" fill="hsl(220 70% 50%)" radius={[4, 4, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
   );

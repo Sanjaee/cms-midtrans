@@ -5,11 +5,7 @@ const Skeleton = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn("shimmer rounded-lg", className)}
-    {...props}
-  />
+  <div ref={ref} className={cn("shimmer rounded-md", className)} {...props} />
 ));
 Skeleton.displayName = "Skeleton";
 

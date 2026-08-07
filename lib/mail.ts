@@ -54,14 +54,14 @@ export function layoutEmail(
 <body style="margin:0;padding:0;background:#f5f5f4;font-family:-apple-system,Segoe UI,Roboto,sans-serif;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="padding:40px 16px;"><tr><td align="center">
 <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#fff;border-radius:20px;overflow:hidden;border:1px solid #e7e5e4;">
-<tr><td style="padding:32px 40px 8px;background:linear-gradient(120deg,#f59e0b,#f43f5e);">
-<h1 style="margin:0;color:#fff;font-size:20px;">${title}</h1>
+<tr><td style="padding:32px 40px 8px;background:#18181b;">
+<h1 style="margin:0;color:#fafafa;font-size:20px;">${title}</h1>
 </td></tr>
 <tr><td style="padding:32px 40px;color:#292524;font-size:15px;line-height:1.6;">
 ${body}
 ${
   cta
-    ? `<p style="margin:24px 0 0;"><a href="${cta.url}" style="display:inline-block;background:linear-gradient(120deg,#f59e0b,#f43f5e);color:#fff;text-decoration:none;padding:12px 28px;border-radius:999px;font-weight:600;">${cta.label}</a></p>`
+    ? `<p style="margin:24px 0 0;"><a href="${cta.url}" style="display:inline-block;background:#18181b;color:#fff;text-decoration:none;padding:12px 28px;border-radius:8px;font-weight:600;">${cta.label}</a></p>`
     : ""
 }
 </td></tr>

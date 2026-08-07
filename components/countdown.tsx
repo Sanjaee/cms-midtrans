@@ -53,17 +53,17 @@ export function Countdown({ target, className, size = "md" }: CountdownProps) {
             <div
               className={cn(
                 box,
-                "flex items-center justify-center rounded-lg bg-card/10 font-bold tabular-nums backdrop-blur border border-white/10",
+                "flex items-center justify-center rounded-md border bg-card font-bold tabular-nums shadow-sm text-foreground",
               )}
             >
               {String(u.value).padStart(2, "0")}
             </div>
-            <span className="text-[10px] uppercase tracking-wider text-white/60">
+            <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
               {u.label}
             </span>
           </div>
           {u.label !== "Detik" && (
-            <span className="pb-4 font-bold text-white/50">:</span>
+            <span className="pb-4 font-bold text-muted-foreground">:</span>
           )}
         </div>
       ))}

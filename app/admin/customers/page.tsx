@@ -45,7 +45,7 @@ export default async function AdminCustomersPage() {
         <p className="text-sm text-muted-foreground">Kelola data pelanggan toko.</p>
       </div>
 
-      <div className="rounded-2xl border bg-card soft-shadow">
+      <div className="rounded-2xl border bg-card shadow-sm">
         <Table>
           <TableHeader>
             <TableRow>

@@ -51,7 +51,7 @@ export function CartSummary() {
   if (!items.length) return null;
 
   return (
-    <div className="rounded-2xl border bg-card p-6 soft-shadow lg:sticky lg:top-24">
+    <div className="rounded-2xl border bg-card p-6 shadow-sm lg:sticky lg:top-24">
       <h3 className="text-lg font-bold">Ringkasan Belanja</h3>
 
       <div className="mt-4">
