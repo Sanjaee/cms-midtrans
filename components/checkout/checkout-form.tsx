@@ -12,6 +12,7 @@ import {
   CreditCard,
   Check,
   FlaskConical,
+  Bookmark,
 } from "lucide-react";
 import { useCart } from "@/store/cart-store";
 import { createOrderAction, completeTestPaymentAction } from "@/lib/order-actions";
@@ -49,13 +50,64 @@ const PROVINCES = [
   "Nusa Tenggara Timur", "Papua", "Lainnya",
 ];
 
-export function CheckoutForm({ testMode = false }: { testMode?: boolean }) {
+interface SavedAddress {
+  id: string;
+  label: string;
+  name: string;
+  phone: string | null;
+  line1: string;
+  city: string;
+  province: string;
+  postalCode: string | null;
+  isDefault: boolean;
+}
+
+export function CheckoutForm({
+  testMode = false,
+  user,
+  addresses = [],
+}: {
+  testMode?: boolean;
+  user?: { name: string; email: string };
+  addresses?: SavedAddress[];
+}) {
   const router = useRouter();
   const { items, clearCart, subtotal, coupon } = useCart();
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState("");
   const [courierId, setCourierId] = React.useState("");
   const [serviceId, setServiceId] = React.useState("");
+  const defaultAddress =
+    addresses.find((a) => a.isDefault) || addresses[0] || null;
+  const [selectedAddressId, setSelectedAddressId] = React.useState(
+    defaultAddress?.id || "",
+  );
+  const [form, setForm] = React.useState({
+    name: user?.name || defaultAddress?.name || "",
+    email: user?.email || "",
+    phone: defaultAddress?.phone || "",
+    address: defaultAddress?.line1 || "",
+    city: defaultAddress?.city || "",
+    province: defaultAddress?.province || "",
+    postalCode: defaultAddress?.postalCode || "",
+    notes: "",
+  });
+
+  const setField = (key: keyof typeof form, value: string) =>
+    setForm((f) => ({ ...f, [key]: value }));
+
+  const applyAddress = (a: SavedAddress) => {
+    setForm((f) => ({
+      ...f,
+      name: a.name || f.name,
+      phone: a.phone || f.phone,
+      address: a.line1,
+      city: a.city,
+      province: a.province,
+      postalCode: a.postalCode || "",
+    }));
+    setSelectedAddressId(a.id);
+  };
 
   const shippingCost = React.useMemo(() => {
     if (!courierId || !serviceId) return null;
@@ -87,17 +139,16 @@ export function CheckoutForm({ testMode = false }: { testMode?: boolean }) {
     setLoading(true);
     setError("");
 
-    const formData = new FormData(e.currentTarget);
     const result = await createOrderAction({
       items: items.map((i) => ({ id: i.productId, qty: i.qty })),
-      name: formData.get("name")?.toString() || "",
-      email: formData.get("email")?.toString() || "",
-      phone: formData.get("phone")?.toString(),
-      address: formData.get("address")?.toString() || "",
-      city: formData.get("city")?.toString() || "",
-      province: formData.get("province")?.toString() || "",
-      postalCode: formData.get("postalCode")?.toString(),
-      notes: formData.get("notes")?.toString(),
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      address: form.address,
+      city: form.city,
+      province: form.province,
+      postalCode: form.postalCode,
+      notes: form.notes,
       courierId,
       serviceId,
       couponCode: coupon?.code || undefined,
@@ -215,15 +266,15 @@ export function CheckoutForm({ testMode = false }: { testMode?: boolean }) {
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             <div className="space-y-2">
               <Label htmlFor="name">Nama Lengkap</Label>
-              <Input id="name" name="name" placeholder="Nama Anda" required />
+              <Input id="name" name="name" placeholder="Nama Anda" required value={form.name} onChange={(e) => setField("name", e.target.value)} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
-              <Input id="email" name="email" type="email" placeholder="nama@email.com" required />
+              <Input id="email" name="email" type="email" placeholder="nama@email.com" required value={form.email} onChange={(e) => setField("email", e.target.value)} />
             </div>
             <div className="space-y-2 sm:col-span-2">
               <Label htmlFor="phone">No. HP</Label>
-              <Input id="phone" name="phone" type="tel" placeholder="08xxxxxxxxxx" />
+              <Input id="phone" name="phone" type="tel" placeholder="08xxxxxxxxxx" value={form.phone} onChange={(e) => setField("phone", e.target.value)} />
             </div>
           </div>
         </section>
@@ -233,10 +284,53 @@ export function CheckoutForm({ testMode = false }: { testMode?: boolean }) {
             <span className="bg-brand-gradient flex h-7 w-7 items-center justify-center rounded-full text-xs text-white">2</span>
             <MapPin className="h-4 w-4 text-primary" /> Alamat Pengiriman
           </h3>
+
+          {addresses.length > 0 && (
+            <div className="mt-4">
+              <p className="mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                Gunakan alamat tersimpan
+              </p>
+              <div className="grid gap-2 sm:grid-cols-2">
+                {addresses.map((a) => (
+                  <label
+                    key={a.id}
+                    className={cn(
+                      "flex cursor-pointer items-start gap-3 rounded-xl border p-3 text-sm transition-colors",
+                      selectedAddressId === a.id
+                        ? "border-primary bg-primary/5"
+                        : "hover:bg-accent",
+                    )}
+                  >
+                    <input
+                      type="radio"
+                      name="savedAddress"
+                      checked={selectedAddressId === a.id}
+                      onChange={() => applyAddress(a)}
+                      className="mt-0.5 h-4 w-4 accent-orange-500"
+                    />
+                    <span className="min-w-0">
+                      <span className="flex items-center gap-2 font-medium">
+                        {a.label}
+                        {a.isDefault && (
+                          <span className="rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-semibold text-emerald-500">
+                            Utama
+                          </span>
+                        )}
+                      </span>
+                      <span className="mt-0.5 block text-xs text-muted-foreground">
+                        {a.name} · {a.line1}, {a.city}, {a.province} {a.postalCode}
+                      </span>
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="mt-4 grid gap-4 sm:grid-cols-2">
             <div className="space-y-2 sm:col-span-2">
               <Label htmlFor="address">Alamat Lengkap</Label>
-              <Textarea id="address" name="address" placeholder="Jalan, nomor rumah, RT/RW, kelurahan" required minLength={10} />
+              <Textarea id="address" name="address" placeholder="Jalan, nomor rumah, RT/RW, kelurahan" required minLength={10} value={form.address} onChange={(e) => setField("address", e.target.value)} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="province">Provinsi</Label>
@@ -244,6 +338,8 @@ export function CheckoutForm({ testMode = false }: { testMode?: boolean }) {
                 id="province"
                 name="province"
                 required
+                value={form.province}
+                onChange={(e) => setField("province", e.target.value)}
                 className="flex h-10 w-full rounded-lg border border-input bg-card/40 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring/60"
               >
                 <option value="">Pilih provinsi</option>
@@ -254,17 +350,22 @@ export function CheckoutForm({ testMode = false }: { testMode?: boolean }) {
             </div>
             <div className="space-y-2">
               <Label htmlFor="city">Kota/Kabupaten</Label>
-              <Input id="city" name="city" placeholder="Kota" required />
+              <Input id="city" name="city" placeholder="Kota" required value={form.city} onChange={(e) => setField("city", e.target.value)} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="postalCode">Kode Pos</Label>
-              <Input id="postalCode" name="postalCode" placeholder="12345" />
+              <Input id="postalCode" name="postalCode" placeholder="12345" value={form.postalCode} onChange={(e) => setField("postalCode", e.target.value)} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="notes">Catatan (opsional)</Label>
-              <Input id="notes" name="notes" placeholder="Catatan untuk kurir" />
+              <Input id="notes" name="notes" placeholder="Catatan untuk kurir" value={form.notes} onChange={(e) => setField("notes", e.target.value)} />
             </div>
           </div>
+          <p className="mt-4 flex items-center gap-1.5 text-xs text-muted-foreground">
+            <Bookmark className="h-3.5 w-3.5" />
+            Alamat baru yang Anda isi akan otomatis tersimpan ke &quot;Alamat
+            Saya&quot; untuk checkout berikutnya.
+          </p>
         </section>
 
         <section className="rounded-2xl border bg-card p-6 soft-shadow">

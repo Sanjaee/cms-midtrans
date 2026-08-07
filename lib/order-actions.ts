@@ -11,6 +11,7 @@ import {
   notifications,
   analytics,
   coupons,
+  addresses,
 } from "@/db/schema";
 import { getSession } from "@/lib/auth";
 import { generateId, generateOrderNumber, formatIDR } from "@/lib/utils";
@@ -172,6 +173,35 @@ export async function createOrderAction(input: {
   await db.insert(orderItems).values(
     orderItemRows.map((r) => ({ ...r, orderId })),
   );
+
+  try {
+    const existingAddrs = await db
+      .select({ line1: addresses.line1, city: addresses.city, province: addresses.province })
+      .from(addresses)
+      .where(eq(addresses.userId, user.id));
+    const alreadySaved = existingAddrs.some(
+      (a) =>
+        a.line1 === data.address &&
+        a.city === data.city &&
+        a.province === data.province,
+    );
+    if (!alreadySaved) {
+      await db.insert(addresses).values({
+        id: generateId(),
+        userId: user.id,
+        label: existingAddrs.length === 0 ? "Rumah" : `Alamat ${existingAddrs.length + 1}`,
+        name: data.name,
+        phone: data.phone,
+        line1: data.address,
+        city: data.city,
+        province: data.province,
+        postalCode: data.postalCode,
+        isDefault: existingAddrs.length === 0,
+      });
+    }
+  } catch {
+    // auto-save alamat bersifat opsional, abaikan jika gagal
+  }
 
   for (const item of data.items) {
     await db
