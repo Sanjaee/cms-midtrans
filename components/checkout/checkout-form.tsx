@@ -11,9 +11,10 @@ import {
   Truck,
   CreditCard,
   Check,
+  FlaskConical,
 } from "lucide-react";
 import { useCart } from "@/store/cart-store";
-import { createOrderAction } from "@/lib/order-actions";
+import { createOrderAction, completeTestPaymentAction } from "@/lib/order-actions";
 import { COURIERS } from "@/lib/shipping-data";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -48,7 +49,7 @@ const PROVINCES = [
   "Nusa Tenggara Timur", "Papua", "Lainnya",
 ];
 
-export function CheckoutForm() {
+export function CheckoutForm({ testMode = false }: { testMode?: boolean }) {
   const router = useRouter();
   const { items, clearCart, subtotal, coupon } = useCart();
   const [loading, setLoading] = React.useState(false);
@@ -104,11 +105,31 @@ export function CheckoutForm() {
 
     if (result.error) {
       setLoading(false);
-      setError(result.error);
+      if (result.orderId) {
+        toast.error(
+          result.error +
+            " Pesanan tersimpan, Anda dapat membayar ulang dari halaman pesanan.",
+        );
+        router.push(`/account/orders/${result.orderId}`);
+      } else {
+        setError(result.error);
+      }
       return;
     }
 
     if (result.orderId) clearCart();
+
+    if (result.testMode && result.orderId) {
+      const testRes = await completeTestPaymentAction(result.orderId);
+      if (testRes.success) {
+        toast.success("Pembayaran mode uji berhasil");
+        router.push(`/checkout/success?order=${result.orderId}`);
+      } else {
+        setLoading(false);
+        setError(testRes.error || "Gagal memproses pembayaran uji");
+      }
+      return;
+    }
 
     if (result.snapToken) {
       const clientKey =
@@ -168,7 +189,23 @@ export function CheckoutForm() {
   }
 
   return (
-    <form onSubmit={submit} className="grid gap-8 lg:grid-cols-[1fr_380px]">
+    <div className="space-y-6">
+      {testMode && (
+        <div className="flex items-start gap-3 rounded-2xl border border-amber-500/40 bg-amber-500/10 p-4 text-sm text-amber-700 dark:text-amber-300">
+          <FlaskConical className="mt-0.5 h-4 w-4 shrink-0" />
+          <div>
+            <p className="font-semibold">Mode Uji Aktif</p>
+            <p className="mt-0.5 text-xs opacity-90">
+              Midtrans belum dikonfigurasi (Server Key masih placeholder).
+              Pembayaran akan disimulasikan dan pesanan langsung berstatus{" "}
+              <strong>paid</strong>. Konfigurasi key asli di Settings →
+              Pembayaran untuk memproses pembayaran sungguhan.
+            </p>
+          </div>
+        </div>
+      )}
+
+      <form onSubmit={submit} className="grid gap-8 lg:grid-cols-[1fr_380px]">
       <div className="space-y-6">
         <section className="rounded-2xl border bg-card p-6 soft-shadow">
           <h3 className="flex items-center gap-2 font-bold">
@@ -375,10 +412,13 @@ export function CheckoutForm() {
             )}
           </Button>
           <p className="mt-3 text-center text-xs text-muted-foreground">
-            Pembayaran aman melalui Midtrans. QRIS, VA, e-wallet, & lainnya.
+            {testMode
+              ? "Mode uji: pembayaran disimulasikan tanpa memproses transaksi asli."
+              : "Pembayaran aman melalui Midtrans. QRIS, VA, e-wallet, & lainnya."}
           </p>
         </div>
       </div>
-    </form>
+      </form>
+    </div>
   );
 }

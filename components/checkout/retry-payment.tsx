@@ -3,8 +3,12 @@
 import * as React from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, RefreshCcw } from "lucide-react";
-import { retryPaymentAction } from "@/lib/order-actions";
+import {
+  retryPaymentAction,
+  completeTestPaymentAction,
+} from "@/lib/order-actions";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 export function RetryPayment({ orderId }: { orderId: string }) {
   const router = useRouter();
@@ -15,9 +19,22 @@ export function RetryPayment({ orderId }: { orderId: string }) {
     const result = await retryPaymentAction(orderId);
     if (result.error) {
       setLoading(false);
-      alert(result.error);
+      toast.error(result.error);
       return;
     }
+
+    if (result.testMode) {
+      const testRes = await completeTestPaymentAction(orderId);
+      setLoading(false);
+      if (testRes.success) {
+        toast.success("Pembayaran mode uji berhasil");
+        router.push(`/checkout/success?order=${orderId}`);
+      } else {
+        toast.error(testRes.error || "Gagal memproses pembayaran uji");
+      }
+      return;
+    }
+
     const clientKey =
       process.env.NEXT_PUBLIC_MIDTRANS_CLIENT_KEY ||
       "SB-Mid-client-placeholder";

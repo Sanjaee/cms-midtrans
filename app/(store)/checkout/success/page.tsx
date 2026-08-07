@@ -60,8 +60,16 @@ export default async function CheckoutSuccessPage({
           </div>
           <div className="flex justify-between">
             <span className="text-muted-foreground">Status</span>
-            <span className="font-semibold text-amber-500">
-              Menunggu Pembayaran
+            <span
+              className={
+                orderRow.paymentStatus === "paid"
+                  ? "font-semibold text-emerald-500"
+                  : "font-semibold text-amber-500"
+              }
+            >
+              {orderRow.paymentStatus === "paid"
+                ? "Pembayaran Diterima"
+                : "Menunggu Pembayaran"}
             </span>
           </div>
           <div className="flex justify-between">

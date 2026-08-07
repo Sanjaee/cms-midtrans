@@ -34,6 +34,11 @@ export async function getMidtransConfig() {
   return { serverKey, clientKey, isProduction };
 }
 
+export async function isMidtransConfigured() {
+  const { serverKey } = await getMidtransConfig();
+  return Boolean(serverKey && !serverKey.includes("placeholder"));
+}
+
 export function getSnapBase(isProduction: boolean) {
   return isProduction
     ? "https://app.midtrans.com/snap/v1/transactions"

@@ -15,7 +15,7 @@ import {
 import { getSession } from "@/lib/auth";
 import { generateId, generateOrderNumber, formatIDR } from "@/lib/utils";
 import { getValidCoupon } from "@/lib/queries";
-import { createSnapToken } from "@/lib/midtrans";
+import { createSnapToken, isMidtransConfigured } from "@/lib/midtrans";
 import { calculateShippingCost } from "@/lib/shipping";
 import { sendMail, layoutEmail } from "@/lib/mail";
 
@@ -57,6 +57,7 @@ export async function createOrderAction(input: {
   orderId?: string;
   orderNumber?: string;
   snapToken?: string;
+  testMode?: boolean;
 }> {
   const user = await getSession();
   if (!user) return { error: "Silakan login untuk checkout" };
@@ -193,6 +194,20 @@ export async function createOrderAction(input: {
     status: "pending",
   });
 
+  await db.insert(notifications).values({
+    id: generateId(),
+    userId: user.id,
+    type: "order",
+    title: `Pesanan ${orderNumber} dibuat`,
+    message: "Pesanan Anda menunggu pembayaran. Silakan selesaikan pembayaran.",
+    link: `/account/orders/${orderId}`,
+  });
+
+  const configured = await isMidtransConfigured();
+  if (!configured) {
+    return { orderId, orderNumber, testMode: true };
+  }
+
   const snap = await createSnapToken({
     orderId: orderNumber,
     grossAmount: total,
@@ -212,24 +227,72 @@ export async function createOrderAction(input: {
       .where(eq(orders.id, orderId));
   }
 
-  await db.insert(notifications).values({
-    id: generateId(),
-    userId: user.id,
-    type: "order",
-    title: `Pesanan ${orderNumber} dibuat`,
-    message: "Pesanan Anda menunggu pembayaran. Silakan selesaikan pembayaran.",
-    link: `/account/orders/${orderId}`,
-  });
-
   if (snap.error) {
     return { error: snap.error, orderId, orderNumber };
   }
   return { orderId, orderNumber, snapToken: snap.token };
 }
 
+export async function completeTestPaymentAction(orderId: string): Promise<{
+  error?: string;
+  success?: string;
+}> {
+  const user = await getSession();
+  if (!user) return { error: "Silakan login" };
+
+  const configured = await isMidtransConfigured();
+  if (configured) {
+    return { error: "Midtrans sudah dikonfigurasi, gunakan pembayaran asli" };
+  }
+
+  const [order] = await db
+    .select()
+    .from(orders)
+    .where(and(eq(orders.id, orderId), eq(orders.userId, user.id)));
+  if (!order) return { error: "Pesanan tidak ditemukan" };
+  if (order.paymentStatus === "paid") {
+    return { error: "Pesanan sudah dibayar" };
+  }
+
+  const now = new Date();
+  await db
+    .update(orders)
+    .set({
+      status: "paid",
+      paymentStatus: "paid",
+      paymentMethod: "test_mode",
+      paidAt: now,
+    })
+    .where(eq(orders.id, orderId));
+
+  await db.insert(midtransPayments).values({
+    id: generateId(),
+    orderId,
+    orderNumber: order.orderNumber,
+    transactionId: `TEST-${Date.now()}`,
+    status: "paid",
+    paymentType: "test_mode",
+    amount: order.total,
+  });
+
+  await db.insert(notifications).values({
+    id: generateId(),
+    userId: user.id,
+    type: "payment",
+    title: `Pembayaran berhasil untuk ${order.orderNumber}`,
+    message:
+      "Pembayaran mode uji telah diterima. Pesanan akan segera diproses.",
+    link: `/account/orders/${orderId}`,
+  });
+
+  void incrementDailyAnalytics(order.total);
+  return { success: "Pembayaran mode uji berhasil" };
+}
+
 export async function retryPaymentAction(orderId: string): Promise<{
   error?: string;
   snapToken?: string;
+  testMode?: boolean;
 }> {
   const user = await getSession();
   if (!user) return { error: "Silakan login" };
@@ -240,6 +303,10 @@ export async function retryPaymentAction(orderId: string): Promise<{
     .where(and(eq(orders.id, orderId), eq(orders.userId, user.id)));
   if (!order) return { error: "Pesanan tidak ditemukan" };
   if (order.paymentStatus === "paid") return { error: "Pesanan sudah dibayar" };
+
+  if (!(await isMidtransConfigured())) {
+    return { testMode: true };
+  }
 
   const [items] = await db
     .select()
