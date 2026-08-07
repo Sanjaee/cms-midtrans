@@ -15,7 +15,11 @@ import {
   Bookmark,
 } from "lucide-react";
 import { useCart } from "@/store/cart-store";
-import { createOrderAction, completeTestPaymentAction } from "@/lib/order-actions";
+import {
+  createOrderAction,
+  completeTestPaymentAction,
+  confirmClientPaymentAction,
+} from "@/lib/order-actions";
 import { COURIERS } from "@/lib/shipping-data";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -203,7 +207,12 @@ export function CheckoutForm({
 
       loadSnap(() => {
         window.snap!.pay(result.snapToken as string, {
-          onSuccess: () => {
+          onSuccess: async (snapResult) => {
+            if (result.orderId) {
+              const tx = (snapResult as { transaction_id?: string })
+                ?.transaction_id;
+              await confirmClientPaymentAction(result.orderId, tx);
+            }
             router.push(`/checkout/success?order=${result.orderId}`);
           },
           onPending: () => {

@@ -6,6 +6,7 @@ import { Loader2, RefreshCcw } from "lucide-react";
 import {
   retryPaymentAction,
   completeTestPaymentAction,
+  confirmClientPaymentAction,
 } from "@/lib/order-actions";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -48,7 +49,12 @@ export function RetryPayment({ orderId }: { orderId: string }) {
     };
     loadSnap(() => {
       window.snap!.pay(result.snapToken as string, {
-        onSuccess: () => router.push(`/checkout/success?order=${orderId}`),
+        onSuccess: async (snapResult) => {
+          const tx = (snapResult as { transaction_id?: string })
+            ?.transaction_id;
+          await confirmClientPaymentAction(orderId, tx);
+          router.push(`/checkout/success?order=${orderId}`);
+        },
         onPending: () => router.push(`/checkout/failed?order=${orderId}&pending=1`),
         onError: () => router.push(`/checkout/failed?order=${orderId}`),
         onClose: () => router.push(`/account/orders/${orderId}`),

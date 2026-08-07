@@ -71,6 +71,7 @@ export async function POST(request: NextRequest) {
     .onConflictDoNothing();
 
   if (mapped === "paid") {
+    const wasPaid = order.paymentStatus === "paid";
     await db
       .update(orders)
       .set({
@@ -99,7 +100,7 @@ export async function POST(request: NextRequest) {
       total: order.total,
     });
 
-    void incrementDailyAnalytics(order.total);
+    if (!wasPaid) void incrementDailyAnalytics(order.total);
   } else if (mapped === "expired" || mapped === "cancelled") {
     await db
       .update(orders)

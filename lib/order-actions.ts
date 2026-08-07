@@ -238,16 +238,42 @@ export async function createOrderAction(input: {
     return { orderId, orderNumber, testMode: true };
   }
 
-  const snap = await createSnapToken({
-    orderId: orderNumber,
-    grossAmount: total,
-    customer: { firstName: data.name, email: data.email, phone: data.phone },
-    items: orderItemRows.map((r) => ({
+  const snapItems = [
+    ...orderItemRows.map((r) => ({
       id: r.productId,
       price: r.price,
       quantity: r.qty,
       name: r.productName,
     })),
+    ...(discount > 0
+      ? [
+          {
+            id: "discount",
+            price: -discount,
+            quantity: 1,
+            name: data.couponCode
+              ? `Diskon (${data.couponCode.toUpperCase()})`
+              : "Diskon",
+          },
+        ]
+      : []),
+    ...(shipping.cost > 0
+      ? [
+          {
+            id: "shipping",
+            price: shipping.cost,
+            quantity: 1,
+            name: `Ongkir ${shipping.courier.name} ${shipping.service.name}`,
+          },
+        ]
+      : []),
+  ];
+
+  const snap = await createSnapToken({
+    orderId: orderNumber,
+    grossAmount: total,
+    customer: { firstName: data.name, email: data.email, phone: data.phone },
+    items: snapItems,
   });
 
   if (snap.token) {
@@ -317,6 +343,61 @@ export async function completeTestPaymentAction(orderId: string): Promise<{
 
   void incrementDailyAnalytics(order.total);
   return { success: "Pembayaran mode uji berhasil" };
+}
+
+export async function confirmClientPaymentAction(
+  orderId: string,
+  transactionId?: string,
+): Promise<{ error?: string; success?: string }> {
+  const user = await getSession();
+  if (!user) return { error: "Silakan login" };
+
+  const [order] = await db
+    .select()
+    .from(orders)
+    .where(and(eq(orders.id, orderId), eq(orders.userId, user.id)));
+  if (!order) return { error: "Pesanan tidak ditemukan" };
+  if (order.paymentStatus === "paid") {
+    return { success: "Pesanan sudah dibayar" };
+  }
+  if (!["pending", "waiting_payment"].includes(order.status)) {
+    return { error: "Status pesanan tidak dapat diperbarui" };
+  }
+
+  const now = new Date();
+  await db
+    .update(orders)
+    .set({
+      status: "paid",
+      paymentStatus: "paid",
+      paidAt: now,
+      paymentMethod: order.paymentMethod || "midtrans",
+      midtransTransactionId: transactionId || order.midtransTransactionId,
+    })
+    .where(eq(orders.id, orderId));
+
+  await db.insert(midtransPayments).values({
+    id: generateId(),
+    orderId,
+    orderNumber: order.orderNumber,
+    transactionId: transactionId || `CLIENT-${Date.now()}`,
+    status: "paid",
+    paymentType: "snap",
+    amount: order.total,
+  });
+
+  await db.insert(notifications).values({
+    id: generateId(),
+    userId: user.id,
+    type: "payment",
+    title: `Pembayaran berhasil untuk ${order.orderNumber}`,
+    message:
+      "Pembayaran Anda telah diterima. Pesanan akan segera diproses.",
+    link: `/account/orders/${orderId}`,
+  });
+
+  void incrementDailyAnalytics(order.total);
+  return { success: "Pembayaran dikonfirmasi" };
 }
 
 export async function retryPaymentAction(orderId: string): Promise<{
