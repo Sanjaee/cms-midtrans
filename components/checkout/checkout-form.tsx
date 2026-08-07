@@ -50,7 +50,7 @@ const PROVINCES = [
 
 export function CheckoutForm() {
   const router = useRouter();
-  const { items, clearCart, subtotal } = useCart();
+  const { items, clearCart, subtotal, coupon } = useCart();
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState("");
   const [courierId, setCourierId] = React.useState("");
@@ -64,7 +64,18 @@ export function CheckoutForm() {
     return service;
   }, [courierId, serviceId]);
 
-  const total = subtotal() + (shippingCost?.cost || 0);
+  const couponDiscount = React.useMemo(() => {
+    if (!coupon) return 0;
+    const sub = subtotal();
+    let d = coupon.type === "percent"
+      ? Math.round((sub * coupon.value) / 100)
+      : coupon.value;
+    if (coupon.maxDiscount) d = Math.min(d, coupon.maxDiscount);
+    if (sub < coupon.minSpend) return 0;
+    return Math.min(d, sub);
+  }, [coupon, subtotal]);
+
+  const total = Math.max(0, subtotal() - couponDiscount + (shippingCost?.cost || 0));
 
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -88,7 +99,7 @@ export function CheckoutForm() {
       notes: formData.get("notes")?.toString(),
       courierId,
       serviceId,
-      couponCode: undefined,
+      couponCode: coupon?.code || undefined,
     });
 
     if (result.error) {
@@ -321,6 +332,16 @@ export function CheckoutForm() {
               <span className="text-muted-foreground">Subtotal</span>
               <span className="font-semibold">{formatIDR(subtotal())}</span>
             </div>
+            {coupon && (
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">
+                  Diskon ({coupon.code})
+                </span>
+                <span className="font-semibold text-emerald-500">
+                  -{formatIDR(couponDiscount)}
+                </span>
+              </div>
+            )}
             <div className="flex justify-between">
               <span className="text-muted-foreground">Ongkir</span>
               <span className="font-semibold">

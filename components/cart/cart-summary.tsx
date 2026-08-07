@@ -10,22 +10,13 @@ import { Separator } from "@/components/ui/separator";
 import { formatIDR } from "@/lib/utils";
 import { toast } from "sonner";
 
-interface Coupon {
-  id: string;
-  code: string;
-  type: "percent" | "fixed";
-  value: number;
-  minSpend: number;
-  maxDiscount: number | null;
-  freeShipping: boolean;
-}
-
 export function CartSummary() {
   const router = useRouter();
   const items = useCart((s) => s.items);
   const subtotal = useCart((s) => s.subtotal());
-  const [code, setCode] = React.useState("");
-  const [coupon, setCoupon] = React.useState<Coupon | null>(null);
+  const coupon = useCart((s) => s.coupon);
+  const setCoupon = useCart((s) => s.setCoupon);
+  const [code, setCode] = React.useState(coupon?.code || "");
   const [loading, setLoading] = React.useState(false);
 
   const validate = async () => {

@@ -15,11 +15,23 @@ export interface CartItem {
   weight: number;
 }
 
+export interface CartCoupon {
+  id: string;
+  code: string;
+  type: "percent" | "fixed";
+  value: number;
+  minSpend: number;
+  maxDiscount: number | null;
+  freeShipping: boolean;
+}
+
 interface CartState {
   items: CartItem[];
+  coupon: CartCoupon | null;
   addItem: (item: Omit<CartItem, "qty"> & { qty?: number }) => void;
   removeItem: (productId: string) => void;
   updateQty: (productId: string, qty: number) => void;
+  setCoupon: (coupon: CartCoupon | null) => void;
   clearCart: () => void;
   count: () => number;
   subtotal: () => number;
@@ -29,6 +41,7 @@ export const useCart = create<CartState>()(
   persist(
     (set, get) => ({
       items: [],
+      coupon: null,
       addItem: (item) => {
         const existing = get().items.find(
           (i) => i.productId === item.productId,
@@ -62,7 +75,8 @@ export const useCart = create<CartState>()(
             )
             .filter((i) => i.qty > 0),
         }),
-      clearCart: () => set({ items: [] }),
+      setCoupon: (coupon) => set({ coupon }),
+      clearCart: () => set({ items: [], coupon: null }),
       count: () => get().items.reduce((acc, i) => acc + i.qty, 0),
       subtotal: () =>
         get().items.reduce((acc, i) => acc + i.price * i.qty, 0),
