@@ -8,6 +8,7 @@ import { toggleUserStatusAction } from "@/lib/admin-actions";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { ActionButton } from "@/components/admin/action-button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 export const metadata: Metadata = { title: "Manajemen Pelanggan" };
@@ -86,13 +87,13 @@ export default async function AdminCustomersPage() {
                     <Button asChild variant="outline" size="sm">
                       <Link href={`/admin/customers/${u.id}`}>Detail</Link>
                     </Button>
-                    <Button
+                    <ActionButton
                       variant={u.status === "active" ? "outline" : "destructive"}
                       size="sm"
-                      onClick={async () => await toggleUserStatusAction(u.id)}
+                      action={toggleUserStatusAction.bind(null, u.id)}
                     >
                       {u.status === "active" ? "Suspend" : "Aktifkan"}
-                    </Button>
+                    </ActionButton>
                   </div>
                 </TableCell>
               </TableRow>

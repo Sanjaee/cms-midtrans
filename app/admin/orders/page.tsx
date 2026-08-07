@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import { OrderStatusFilter } from "@/components/admin/order-status-filter";
 
 export const metadata: Metadata = { title: "Manajemen Pesanan" };
 
@@ -57,20 +58,7 @@ export default async function AdminOrdersPage({
           />
           <Button variant="outline" type="submit">Cari</Button>
         </form>
-        <form action="/admin/orders">
-          <input type="hidden" name="q" value={sp.q || ""} />
-          <select
-            name="status"
-            defaultValue={sp.status || "all"}
-            onChange={(e) => (window.location.href = `/admin/orders?status=${e.target.value}${sp.q ? `&q=${sp.q}` : ""}`)}
-            className="h-10 rounded-lg border border-input bg-card px-3 text-sm"
-          >
-            <option value="all">Semua Status</option>
-            {["pending", "waiting_payment", "paid", "processing", "shipped", "completed", "cancelled", "refunded"].map((s) => (
-              <option key={s} value={s}>{s}</option>
-            ))}
-          </select>
-        </form>
+        <OrderStatusFilter currentStatus={sp.status || "all"} query={sp.q} />
       </div>
 
       <div className="rounded-2xl border bg-card soft-shadow">

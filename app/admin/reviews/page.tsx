@@ -7,7 +7,7 @@ import { formatDate } from "@/lib/utils";
 import { approveReviewAction, replyReviewAction } from "@/lib/admin-actions";
 import { Rating } from "@/components/ui/rating";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { ActionButton } from "@/components/admin/action-button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ReplyForm } from "@/components/admin/reply-form";
 import { Check, X } from "lucide-react";
@@ -87,14 +87,23 @@ export default async function AdminReviewsPage() {
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <ReplyForm reviewId={r.id} currentReply={r.adminReply || ""} />
               {!r.approved && (
-                <Button size="sm" variant="outline" onClick={async () => await approveReviewAction(r.id, true)}>
+                <ActionButton
+                  variant="outline"
+                  size="sm"
+                  action={approveReviewAction.bind(null, r.id, true)}
+                >
                   <Check className="h-3.5 w-3.5" /> Setujui
-                </Button>
+                </ActionButton>
               )}
               {r.approved && (
-                <Button size="sm" variant="ghost" className="text-destructive" onClick={async () => await approveReviewAction(r.id, false)}>
+                <ActionButton
+                  variant="ghost"
+                  size="sm"
+                  className="text-destructive"
+                  action={approveReviewAction.bind(null, r.id, false)}
+                >
                   <X className="h-3.5 w-3.5" /> Tolak
-                </Button>
+                </ActionButton>
               )}
             </div>
           </div>

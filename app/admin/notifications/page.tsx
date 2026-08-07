@@ -6,6 +6,7 @@ import { timeAgo } from "@/lib/utils";
 import { createNotificationAction, markNotificationReadAction } from "@/lib/admin-actions";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { ActionButton } from "@/components/admin/action-button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -49,15 +50,9 @@ export default async function AdminNotificationsPage() {
                 {n.message && <p className="mt-1 text-sm text-muted-foreground">{n.message}</p>}
                 <p className="mt-1 text-xs text-muted-foreground">{timeAgo(n.createdAt)}</p>
               </div>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={async () => {
-                  await markNotificationReadAction(n.id);
-                }}
-              >
+              <ActionButton action={markNotificationReadAction.bind(null, n.id)}>
                 Tandai dibaca
-              </Button>
+              </ActionButton>
             </div>
           ))}
           {!rows.length && <p className="text-sm text-muted-foreground">Belum ada notifikasi.</p>}

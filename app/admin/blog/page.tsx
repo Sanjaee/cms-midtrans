@@ -88,7 +88,7 @@ export default async function AdminBlogPage({
                     <Button asChild variant="outline" size="sm">
                       <Link href={`/admin/blog/${p.id}/edit`}>Edit</Link>
                     </Button>
-                    <DeleteButton action={() => deletePostAction(p.id)} />
+                    <DeleteButton action={deletePostAction.bind(null, p.id)} />
                   </div>
                 </TableCell>
               </TableRow>

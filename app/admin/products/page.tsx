@@ -149,7 +149,7 @@ export default async function AdminProductsPage({
                       <Link href={`/admin/products/${p.id}/edit`}>Edit</Link>
                     </Button>
                     <DeleteButton
-                      action={() => deleteProductAction(p.id)}
+                      action={deleteProductAction.bind(null, p.id)}
                       confirmText="Produk akan dipindahkan ke tempat sampah dan tidak tampil di toko."
                     />
                   </div>

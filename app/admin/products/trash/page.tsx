@@ -6,8 +6,8 @@ import { products } from "@/db/schema";
 import { formatIDR } from "@/lib/utils";
 import { restoreProductAction, hardDeleteProductAction } from "@/lib/admin-actions";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { DeleteButton } from "@/components/admin/delete-button";
+import { ActionButton } from "@/components/admin/action-button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { RotateCcw, Trash2 } from "lucide-react";
 import Link from "next/link";
@@ -64,15 +64,11 @@ export default async function TrashPage() {
                 </TableCell>
                 <TableCell className="text-right">
                   <div className="flex justify-end gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={async () => await restoreProductAction(p.id)}
-                    >
+                    <ActionButton action={restoreProductAction.bind(null, p.id)}>
                       <RotateCcw className="h-3.5 w-3.5" /> Pulihkan
-                    </Button>
+                    </ActionButton>
                     <DeleteButton
-                      action={() => hardDeleteProductAction(p.id)}
+                      action={hardDeleteProductAction.bind(null, p.id)}
                       label="Hapus Permanen"
                       confirmTitle="Hapus permanen produk ini?"
                       confirmText="Tindakan ini tidak dapat dibatalkan."

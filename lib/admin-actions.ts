@@ -706,7 +706,7 @@ export async function replyReviewAction(reviewId: string, reply: string) {
 
 export async function markNotificationReadAction(id: string) {
   await db.update(notifications).set({ read: true }).where(eq(notifications.id, id));
-  return { ok: true };
+  return { success: "Notifikasi ditandai dibaca" };
 }
 
 export async function createNotificationAction(input: {
