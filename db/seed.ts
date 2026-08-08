@@ -117,7 +117,7 @@ async function seed() {
       id,
       name: p.name || "",
       slug,
-      sku: `NV-${String(count + 1).padStart(4, "0")}`,
+      sku: `ZC-${String(count + 1).padStart(4, "0")}`,
       categoryId: catIds[p.cat],
       brand: p.brand,
       price,
@@ -128,7 +128,10 @@ async function seed() {
       stock: p.stock || 0,
       weight: p.weight || 0,
       thumbnail: `/placeholders/${(count % 10) + 1}.svg`,
-      images: [`/placeholders/${(count % 10) + 1}.svg`, `/placeholders/${((count + 2) % 10) + 1}.svg`],
+      images: Array.from({ length: 5 }, (_, i) => {
+        const n = ((count + i * 2) % 10) + 1;
+        return `/placeholders/${n}.svg`;
+      }),
       badge: (p.badge as never) || "none",
       status: "published",
       featured: p.featured || false,
@@ -139,7 +142,7 @@ async function seed() {
         Bahan: "Premium",
         Garansi: "1 Tahun",
         Pengiriman: "Seluruh Indonesia",
-        SKU: `NV-${String(count + 1).padStart(4, "0")}`,
+        SKU: `ZC-${String(count + 1).padStart(4, "0")}`,
       },
       rating: String((4 + Math.random()).toFixed(1)),
       ratingCount: Math.floor(10 + Math.random() * 200),
@@ -149,8 +152,8 @@ async function seed() {
   console.log(`✅ Produk: ${count}`);
 
   const couponDefs = [
-    { code: "NOVA10", type: "percent", value: 10, minSpend: 150000, maxDiscount: 50000 },
-    { code: "NOVA20", type: "percent", value: 20, minSpend: 300000, maxDiscount: 100000 },
+    { code: "ZACODE10", type: "percent", value: 10, minSpend: 150000, maxDiscount: 50000 },
+    { code: "ZACODE20", type: "percent", value: 20, minSpend: 300000, maxDiscount: 100000 },
     { code: "GRATISONGKIR", type: "fixed", value: 0, minSpend: 200000, freeShipping: true },
     { code: "DISKON50K", type: "fixed", value: 50000, minSpend: 250000 },
   ];
@@ -248,7 +251,7 @@ async function seed() {
       cat: "Promo",
       excerpt: "Jangan lewatkan promo spesial bulan ini! Diskon hingga 50% untuk produk pilihan.",
       content:
-        "<p>Bulan ini kami menghadirkan promo spesial untuk Anda! Diskon hingga 50% untuk berbagai produk pilihan.</p><h2>Apa Saja Promonya?</h2><p>Flash sale harian, kupon diskon, dan gratis ongkir untuk pembelian minimal tertentu.</p><h2>Gunakan Kode Kupon</h2><p>Gunakan kode <strong>NOVA10</strong> untuk diskon 10% atau <strong>NOVA20</strong> untuk diskon 20%.</p><h2>Jangan Tunda!</h2><p>Promo terbatas hanya sampai akhir bulan. Segera belanja sebelum kehabisan!</p>",
+        "<p>Bulan ini kami menghadirkan promo spesial untuk Anda! Diskon hingga 50% untuk berbagai produk pilihan.</p><h2>Apa Saja Promonya?</h2><p>Flash sale harian, kupon diskon, dan gratis ongkir untuk pembelian minimal tertentu.</p><h2>Gunakan Kode Kupon</h2><p>Gunakan kode <strong>ZACODE10</strong> untuk diskon 10% atau <strong>ZACODE20</strong> untuk diskon 20%.</p><h2>Jangan Tunda!</h2><p>Promo terbatas hanya sampai akhir bulan. Segera belanja sebelum kehabisan!</p>",
       tags: ["promo", "diskon", "flash sale"],
     },
   ];
