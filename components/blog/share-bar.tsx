@@ -40,7 +40,7 @@ export function ShareBar({ title, url }: { title: string; url: string }) {
         </a>
       ))}
       <Button variant="outline" size="icon-sm" onClick={copy} aria-label="Salin link">
-        {copied ? <Check className="h-3.5 w-3.5 text-primary" /> : <Link2 className="h-3.5 w-3.5" />}
+        {copied ? <Check className="h-3.5 w-3.5 text-emerald-500" /> : <Link2 className="h-3.5 w-3.5" />}
       </Button>
     </div>
   );

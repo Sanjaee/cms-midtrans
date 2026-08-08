@@ -38,7 +38,7 @@ export function StatCard({
           <span
             className={cn(
               "inline-flex items-center gap-0.5 font-medium",
-              trend > 0 ? "text-primary" : "text-primary",
+              trend > 0 ? "text-emerald-500" : "text-rose-500",
             )}
           >
             {trend > 0 ? (

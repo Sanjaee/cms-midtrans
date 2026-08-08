@@ -18,13 +18,15 @@ export function Hero195() {
       <div className="mx-auto grid min-h-[calc(100vh-6.5rem)] max-w-7xl items-center gap-10 px-4 py-16 lg:grid-cols-2 lg:py-20">
         <div>
           <Badge variant="outline" className="gap-1.5 px-3 py-1">
-            <Sparkles className="h-3.5 w-3.5 text-primary" />
+            <Sparkles className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
             Koleksi Premium 2026
           </Badge>
 
           <h1 className="mt-6 text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
             Belanja Premium dengan{" "}
-            <span className="text-primary">Sentuhan Mewah</span>
+            <span className="text-emerald-600 dark:text-emerald-400">
+              Sentuhan Mewah
+            </span>
           </h1>
 
           <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -46,13 +48,13 @@ export function Hero195() {
 
           <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
             <span className="inline-flex items-center gap-2">
-              <Truck className="h-4 w-4 text-primary" /> Gratis Ongkir
+              <Truck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" /> Gratis Ongkir
             </span>
             <span className="inline-flex items-center gap-2">
-              <ShieldCheck className="h-4 w-4 text-primary" /> 100% Original
+              <ShieldCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" /> 100% Original
             </span>
             <span className="inline-flex items-center gap-2">
-              <BadgePercent className="h-4 w-4 text-primary" /> Diskon Menarik
+              <BadgePercent className="h-4 w-4 text-emerald-600 dark:text-emerald-400" /> Diskon Menarik
             </span>
           </div>
         </div>
@@ -74,7 +76,7 @@ export function Hero195() {
                   Active Noise Cancelling · 36 jam baterai
                 </p>
               </div>
-              <Badge>Rp 699.000</Badge>
+              <Badge variant="success">Rp 699.000</Badge>
             </div>
             <BorderBeam
               size={250}

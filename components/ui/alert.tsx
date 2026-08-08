@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 export function AlertSuccess({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex gap-2 rounded-lg border border-border bg-muted p-4 text-sm text-foreground">
+    <div className="flex gap-2 rounded-lg border border-emerald-500/30 bg-emerald-500/10 p-4 text-sm text-emerald-600 dark:text-emerald-400">
       <CheckCircle2 className="h-4 w-4 shrink-0" />
       <div>{children}</div>
     </div>

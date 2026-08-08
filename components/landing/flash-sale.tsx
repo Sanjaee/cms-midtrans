@@ -19,7 +19,7 @@ export function FlashSaleSection({ products, endsAt }: FlashSaleProps) {
       <div className="mx-auto max-w-7xl px-4">
         <div className="mb-10 flex flex-col items-center justify-between gap-4 sm:flex-row">
           <div className="flex items-center gap-4">
-            <div className="bg-primary flex h-12 w-12 items-center justify-center rounded-md text-primary-foreground shadow-sm">
+            <div className="bg-violet-600 flex h-12 w-12 items-center justify-center rounded-md text-white shadow-sm">
               <Zap className="h-6 w-6" />
             </div>
             <div>

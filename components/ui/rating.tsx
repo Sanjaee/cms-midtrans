@@ -15,16 +15,13 @@ export function Rating({ value, count, size = "sm", className }: RatingProps) {
 
   return (
     <div className={cn("flex items-center gap-1", className)}>
-        <div className="flex">
+      <div className="flex">
         {Array.from({ length: 5 }).map((_, i) => {
           if (i < full) {
             return (
               <Star
                 key={i}
-                className={cn(
-                  "fill-foreground text-foreground",
-                  sizes[size],
-                )}
+                className={cn("fill-amber-400 text-amber-400", sizes[size])}
               />
             );
           }
@@ -32,7 +29,7 @@ export function Rating({ value, count, size = "sm", className }: RatingProps) {
             return (
               <StarHalf
                 key={i}
-                className={cn("fill-foreground text-foreground", sizes[size])}
+                className={cn("fill-amber-400 text-amber-400", sizes[size])}
               />
             );
           }

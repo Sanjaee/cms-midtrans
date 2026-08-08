@@ -182,7 +182,7 @@ export default async function HomePage() {
                 key={b.title}
                 className="group rounded-2xl border bg-card p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
               >
-                <div className="bg-primary mb-4 flex h-12 w-12 items-center justify-center rounded-md text-primary-foreground shadow-sm">
+                <div className="bg-emerald-600 mb-4 flex h-12 w-12 items-center justify-center rounded-md text-white shadow-sm">
                   <b.icon className="h-6 w-6" />
                 </div>
                 <h3 className="font-semibold">{b.title}</h3>
@@ -367,7 +367,7 @@ export default async function HomePage() {
                   key={c.label}
                   className="flex items-center gap-4 rounded-2xl border bg-card p-5 shadow-sm"
                 >
-                  <div className="bg-primary flex h-11 w-11 items-center justify-center rounded-xl text-primary-foreground">
+                  <div className="bg-emerald-600 flex h-11 w-11 items-center justify-center rounded-xl text-white">
                     <c.icon className="h-5 w-5" />
                   </div>
                   <div>
@@ -380,7 +380,7 @@ export default async function HomePage() {
               ))}
             </div>
             <div className="flex flex-col items-center justify-center rounded-2xl border bg-card p-8 text-center shadow-sm">
-              <div className="bg-primary flex h-16 w-16 items-center justify-center rounded-full text-primary-foreground">
+              <div className="bg-emerald-600 flex h-16 w-16 items-center justify-center rounded-full text-white">
                 <MessageCircle className="h-8 w-8" />
               </div>
               <h3 className="mt-4 text-lg font-semibold">

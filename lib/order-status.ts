@@ -12,25 +12,25 @@ export const ORDER_STATUS: Record<
   OrderStatus,
   { label: string; color: string }
 > = {
-  pending: { label: "Pending", color: "bg-muted text-muted-foreground" },
+  pending: { label: "Pending", color: "bg-zinc-500/15 text-zinc-600 dark:text-zinc-400" },
   waiting_payment: {
     label: "Menunggu Pembayaran",
-    color: "border border-foreground/30 bg-background text-foreground",
+    color: "bg-amber-500/15 text-amber-600 dark:text-amber-400",
   },
-  paid: { label: "Dibayar", color: "bg-primary text-primary-foreground" },
+  paid: { label: "Dibayar", color: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400" },
   processing: {
     label: "Diproses",
-    color: "bg-secondary text-secondary-foreground",
+    color: "bg-indigo-500/15 text-indigo-600 dark:text-indigo-400",
   },
   shipped: {
     label: "Dikirim",
-    color: "border border-foreground bg-background text-foreground",
+    color: "bg-sky-500/15 text-sky-600 dark:text-sky-400",
   },
-  completed: { label: "Selesai", color: "bg-primary text-primary-foreground" },
-  cancelled: { label: "Dibatalkan", color: "bg-muted text-muted-foreground" },
+  completed: { label: "Selesai", color: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400" },
+  cancelled: { label: "Dibatalkan", color: "bg-rose-500/15 text-rose-600 dark:text-rose-400" },
   refunded: {
     label: "Dikembalikan",
-    color: "bg-muted-2 text-muted-2-foreground",
+    color: "bg-purple-500/15 text-purple-600 dark:text-purple-400",
   },
 };
 
