@@ -21,6 +21,6 @@ export const useWishlist = create<WishlistState>()(
         }),
       has: (productId) => get().items.includes(productId),
     }),
-    { name: "nova-wishlist" },
+    { name: "zacode-wishlist" },
   ),
 );

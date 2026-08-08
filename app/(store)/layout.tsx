@@ -29,7 +29,7 @@ export default async function StoreLayout({
               }
             : null
         }
-        siteName={settings.siteName || "Nova Store"}
+        siteName={settings.siteName || "Zacode Store"}
       />
       <main className="flex-1">{children}</main>
       <Footer settings={settings} />

@@ -11,7 +11,7 @@ import { Search } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Tips, panduan, dan inspirasi dari Nova Store.",
+  description: "Tips, panduan, dan inspirasi dari Zacode Store.",
 };
 
 export const dynamic = "force-dynamic";

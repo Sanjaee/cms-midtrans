@@ -38,7 +38,7 @@ function RegisterForm() {
       <CardHeader className="text-center">
         <CardTitle className="text-2xl">Buat Akun</CardTitle>
         <CardDescription>
-          Daftar untuk mulai belanja di Nova Store
+          Daftar untuk mulai belanja di Zacode Store
         </CardDescription>
       </CardHeader>
       <CardContent>

@@ -5,11 +5,11 @@ import { settings } from "@/db/schema";
 import { generateId } from "@/lib/utils";
 
 export const DEFAULT_SETTINGS = {
-  siteName: "Nova Store",
+  siteName: "Zacode Store",
   tagline: "Premium essentials untuk hidup lebih baik",
   logo: "",
   favicon: "",
-  contactEmail: "halo@nova.store",
+  contactEmail: "halo@zacode.store",
   contactPhone: "+62 812 3456 7890",
   whatsapp: "6281234567890",
   address: "Jakarta, Indonesia",
@@ -21,10 +21,10 @@ export const DEFAULT_SETTINGS = {
   googleMapsEmbed: "",
   googleAnalyticsId: "",
   metaPixelId: "",
-  seoTitle: "Nova Store — Belanja Premium Online",
+  seoTitle: "Zacode Store — Belanja Premium Online",
   seoDescription:
     "Temukan produk premium pilihan dengan harga terbaik. Belanja mudah, aman, dan cepat.",
-  seoKeywords: "nova store, belanja online, produk premium",
+  seoKeywords: "zacode store, belanja online, produk premium",
   maintenanceMode: "false",
   flashSaleEnabled: "true",
   freeShippingThreshold: "200000",
@@ -37,7 +37,7 @@ export const DEFAULT_SETTINGS = {
   smtpSecure: "false",
   smtpUser: "",
   smtpPass: "",
-  smtpFrom: "Nova Store <noreply@nova.store>",
+  smtpFrom: "Zacode Store <noreply@zacode.store>",
 } as const;
 
 export type SiteSettings = typeof DEFAULT_SETTINGS;

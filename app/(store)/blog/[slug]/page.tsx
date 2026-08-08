@@ -99,7 +99,7 @@ export default async function BlogPostPage({
               {post.title}
             </h1>
             <p className="mt-3 text-muted-foreground">
-              Oleh <span className="font-medium text-foreground">{post.authorName || "Nova Store"}</span>
+              Oleh <span className="font-medium text-foreground">{post.authorName || "Zacode Store"}</span>
             </p>
 
             {post.thumbnail && (

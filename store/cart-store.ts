@@ -81,6 +81,6 @@ export const useCart = create<CartState>()(
       subtotal: () =>
         get().items.reduce((acc, i) => acc + i.price * i.qty, 0),
     }),
-    { name: "nova-cart" },
+    { name: "zacode-cart" },
   ),
 );

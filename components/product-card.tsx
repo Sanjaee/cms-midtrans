@@ -132,7 +132,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
       <div className="flex flex-1 flex-col gap-1.5 p-4">
         <div className="flex items-center justify-between">
           <p className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
-            {product.category?.name || "Nova Store"}
+            {product.category?.name || "Zacode Store"}
           </p>
           <Rating value={Number(product.rating) || 0} count={product.ratingCount} />
         </div>

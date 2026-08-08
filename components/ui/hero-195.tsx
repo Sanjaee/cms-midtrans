@@ -63,7 +63,7 @@ export function Hero195() {
           <Card className="relative aspect-square w-full max-w-lg overflow-hidden border">
             <Image
               src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=900&q=80"
-              alt="Produk unggulan Nova Store"
+              alt="Produk unggulan Zacode Store"
               fill
               sizes="(max-width: 1024px) 0px, 50vw"
               className="object-cover"

@@ -12,17 +12,17 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Nova Store — Belanja Premium Online",
-    template: "%s | Nova Store",
+    default: "Zacode Store — Belanja Premium Online",
+    template: "%s | Zacode Store",
   },
   description:
-    "Temukan produk premium pilihan dengan harga terbaik. Belanja mudah, aman, dan cepat di Nova Store.",
-  keywords: "nova store, belanja online, produk premium",
+    "Temukan produk premium pilihan dengan harga terbaik. Belanja mudah, aman, dan cepat di Zacode Store.",
+  keywords: "zacode store, belanja online, produk premium",
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
   ),
   openGraph: {
-    title: "Nova Store",
+    title: "Zacode Store",
     description:
       "Temukan produk premium pilihan dengan harga terbaik. Belanja mudah, aman, dan cepat.",
     type: "website",

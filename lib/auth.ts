@@ -8,7 +8,7 @@ import { db } from "@/db";
 import { users, sessions, activityLogs, type User } from "@/db/schema";
 import { generateId } from "@/lib/utils";
 
-export const SESSION_COOKIE = "nova_session";
+export const SESSION_COOKIE = "zacode_session";
 const SESSION_HOURS = 12;
 const REMEMBER_DAYS = 30;
 

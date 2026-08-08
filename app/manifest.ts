@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Nova Store — Belanja Premium Online",
-    short_name: "Nova Store",
+    name: "Zacode Store — Belanja Premium Online",
+    short_name: "Zacode Store",
     description:
       "Temukan produk premium pilihan dengan harga terbaik. Belanja mudah, aman, dan cepat.",
     start_url: "/",

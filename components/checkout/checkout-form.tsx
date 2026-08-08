@@ -86,6 +86,10 @@ export function CheckoutForm({
   const [selectedAddressId, setSelectedAddressId] = React.useState(
     defaultAddress?.id || "",
   );
+  const [showAddressForm, setShowAddressForm] = React.useState(
+    !Boolean(defaultAddress),
+  );
+  const selectedAddress = addresses.find((a) => a.id === selectedAddressId) || null;
   const [form, setForm] = React.useState({
     name: user?.name || defaultAddress?.name || "",
     email: user?.email || "",
@@ -111,6 +115,7 @@ export function CheckoutForm({
       postalCode: a.postalCode || "",
     }));
     setSelectedAddressId(a.id);
+    setShowAddressForm(false);
   };
 
   const shippingCost = React.useMemo(() => {
@@ -336,45 +341,80 @@ export function CheckoutForm({
             </div>
           )}
 
-          <div className="mt-4 grid gap-4 sm:grid-cols-2">
-            <div className="space-y-2 sm:col-span-2">
-              <Label htmlFor="address">Alamat Lengkap</Label>
-              <Textarea id="address" name="address" placeholder="Jalan, nomor rumah, RT/RW, kelurahan" required minLength={10} value={form.address} onChange={(e) => setField("address", e.target.value)} />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="province">Provinsi</Label>
-              <select
-                id="province"
-                name="province"
-                required
-                value={form.province}
-                onChange={(e) => setField("province", e.target.value)}
-                className="flex h-10 w-full rounded-lg border border-input bg-card/40 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring/60"
+          {selectedAddress && !showAddressForm && (
+            <div className="mt-4 flex items-start justify-between gap-3 rounded-xl border p-4">
+              <div className="min-w-0">
+                <p className="flex items-center gap-2 font-medium">
+                  {selectedAddress.label}
+                  {selectedAddress.isDefault && (
+                    <span className="rounded-full bg-emerald-500/15 px-2 py-0.5 text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">
+                      Utama
+                    </span>
+                  )}
+                </p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {selectedAddress.name}
+                  {selectedAddress.phone ? ` · ${selectedAddress.phone}` : ""}
+                </p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {selectedAddress.line1}, {selectedAddress.city},{" "}
+                  {selectedAddress.province} {selectedAddress.postalCode}
+                </p>
+              </div>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => setShowAddressForm(true)}
               >
-                <option value="">Pilih provinsi</option>
-                {PROVINCES.map((p) => (
-                  <option key={p} value={p}>{p}</option>
-                ))}
-              </select>
+                Ubah Alamat
+              </Button>
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="city">Kota/Kabupaten</Label>
-              <Input id="city" name="city" placeholder="Kota" required value={form.city} onChange={(e) => setField("city", e.target.value)} />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="postalCode">Kode Pos</Label>
-              <Input id="postalCode" name="postalCode" placeholder="12345" value={form.postalCode} onChange={(e) => setField("postalCode", e.target.value)} />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="notes">Catatan (opsional)</Label>
-              <Input id="notes" name="notes" placeholder="Catatan untuk kurir" value={form.notes} onChange={(e) => setField("notes", e.target.value)} />
-            </div>
-          </div>
-          <p className="mt-4 flex items-center gap-1.5 text-xs text-muted-foreground">
-            <Bookmark className="h-3.5 w-3.5" />
-            Alamat baru yang Anda isi akan otomatis tersimpan ke &quot;Alamat
-            Saya&quot; untuk checkout berikutnya.
-          </p>
+          )}
+
+          {showAddressForm && (
+            <>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                <div className="space-y-2 sm:col-span-2">
+                  <Label htmlFor="address">Alamat Lengkap</Label>
+                  <Textarea id="address" name="address" placeholder="Jalan, nomor rumah, RT/RW, kelurahan" required minLength={10} value={form.address} onChange={(e) => setField("address", e.target.value)} />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="province">Provinsi</Label>
+                  <select
+                    id="province"
+                    name="province"
+                    required
+                    value={form.province}
+                    onChange={(e) => setField("province", e.target.value)}
+                    className="flex h-10 w-full rounded-lg border border-input bg-card/40 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring/60"
+                  >
+                    <option value="">Pilih provinsi</option>
+                    {PROVINCES.map((p) => (
+                      <option key={p} value={p}>{p}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="city">Kota/Kabupaten</Label>
+                  <Input id="city" name="city" placeholder="Kota" required value={form.city} onChange={(e) => setField("city", e.target.value)} />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="postalCode">Kode Pos</Label>
+                  <Input id="postalCode" name="postalCode" placeholder="12345" value={form.postalCode} onChange={(e) => setField("postalCode", e.target.value)} />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="notes">Catatan (opsional)</Label>
+                  <Input id="notes" name="notes" placeholder="Catatan untuk kurir" value={form.notes} onChange={(e) => setField("notes", e.target.value)} />
+                </div>
+              </div>
+              <p className="mt-4 flex items-center gap-1.5 text-xs text-muted-foreground">
+                <Bookmark className="h-3.5 w-3.5" />
+                Alamat baru yang Anda isi akan otomatis tersimpan ke &quot;Alamat
+                Saya&quot; untuk checkout berikutnya.
+              </p>
+            </>
+          )}
         </section>
 
         <section className="rounded-2xl border bg-card p-6 shadow-sm">

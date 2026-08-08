@@ -8,7 +8,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         <div className="bg-primary flex h-10 w-10 items-center justify-center rounded-md text-primary-foreground">
           <Sparkles className="h-5 w-5" />
         </div>
-        <span className="text-xl font-bold">Nova Store</span>
+        <span className="text-xl font-bold">Zacode Store</span>
       </Link>
       <div className="w-full max-w-md">{children}</div>
     </div>

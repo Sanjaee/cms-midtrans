@@ -67,7 +67,7 @@ export async function registerAction(
     "Verifikasi Email Anda",
     layoutEmail(
       "Verifikasi Email",
-      `Halo <strong>${name}</strong>, terima kasih telah mendaftar di Nova Store.<br/>Klik tombol di bawah untuk memverifikasi email Anda.`,
+      `Halo <strong>${name}</strong>, terima kasih telah mendaftar di Zacode Store.<br/>Klik tombol di bawah untuk memverifikasi email Anda.`,
       { label: "Verifikasi Email", url: verifyUrl },
     ),
   );

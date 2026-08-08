@@ -16,7 +16,7 @@ import { Suspense } from "react";
 export const metadata: Metadata = {
   title: "Semua Produk",
   description:
-    "Jelajahi koleksi produk premium Nova Store. Original, berkualitas, dan dikirim cepat.",
+    "Jelajahi koleksi produk premium Zacode Store. Original, berkualitas, dan dikirim cepat.",
 };
 
 export const dynamic = "force-dynamic";

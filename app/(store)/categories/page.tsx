@@ -7,7 +7,7 @@ import { SectionHeading } from "@/components/landing/section-heading";
 
 export const metadata: Metadata = {
   title: "Kategori Produk",
-  description: "Jelajahi semua kategori produk di Nova Store.",
+  description: "Jelajahi semua kategori produk di Zacode Store.",
 };
 
 export const dynamic = "force-dynamic";

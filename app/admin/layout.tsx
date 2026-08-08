@@ -29,7 +29,7 @@ export default async function AdminLayout({
 
   return (
     <AdminShell
-      siteName={settings.siteName || "Nova Store"}
+      siteName={settings.siteName || "Zacode Store"}
       user={{
         name: user.name,
         email: user.email,

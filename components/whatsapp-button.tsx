@@ -7,7 +7,7 @@ export function WhatsAppButton({ number }: { number?: string }) {
   return (
     <a
       href={`https://wa.me/${phone}?text=${encodeURIComponent(
-        "Halo, saya ingin bertanya tentang produk Nova Store",
+        "Halo, saya ingin bertanya tentang produk Zacode Store",
       )}`}
       target="_blank"
       rel="noreferrer"

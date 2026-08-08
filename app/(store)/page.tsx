@@ -319,7 +319,7 @@ export default async function HomePage() {
         <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
             eyebrow="Instagram"
-            title="@nova.store"
+            title="@zacode.store"
             description="Ikuti kami di Instagram untuk konten eksklusif."
           />
           <div className="grid grid-cols-4 gap-2 sm:grid-cols-8">
@@ -359,7 +359,7 @@ export default async function HomePage() {
             <div className="space-y-4">
               {[
                 { icon: MapPin, label: "Alamat", value: "Jakarta, Indonesia" },
-                { icon: Mail, label: "Email", value: "halo@nova.store" },
+                { icon: Mail, label: "Email", value: "halo@zacode.store" },
                 { icon: Phone, label: "Telepon", value: "+62 812 3456 7890" },
                 { icon: Headset, label: "Jam Operasional", value: "Senin - Sabtu, 09.00 - 18.00 WIB" },
               ].map((c) => (

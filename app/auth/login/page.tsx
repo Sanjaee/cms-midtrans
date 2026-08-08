@@ -32,13 +32,16 @@ function LoginForm() {
   const searchParams = useSearchParams();
   const next = searchParams.get("next") || "";
   const [state, action, pending] = useActionState(loginAction, {});
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [remember, setRemember] = React.useState(false);
 
   return (
     <Card className="shadow-sm">
       <CardHeader className="text-center">
         <CardTitle className="text-2xl">Selamat Datang</CardTitle>
         <CardDescription>
-          Masuk ke akun Nova Store Anda
+          Masuk ke akun Zacode Store Anda
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -51,7 +54,16 @@ function LoginForm() {
           )}
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
-            <Input id="email" name="email" type="email" placeholder="nama@email.com" required />
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="nama@email.com"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              autoComplete="email"
+            />
           </div>
           <div className="space-y-2">
             <div className="flex items-center justify-between">
@@ -63,10 +75,24 @@ function LoginForm() {
                 Lupa password?
               </Link>
             </div>
-            <Input id="password" name="password" type="password" placeholder="••••••••" required />
+            <Input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="••••••••"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              autoComplete="current-password"
+            />
           </div>
           <div className="flex items-center gap-2">
-            <Checkbox id="remember" name="remember" />
+            <Checkbox
+              id="remember"
+              name="remember"
+              checked={remember}
+              onCheckedChange={(v) => setRemember(v === true)}
+            />
             <Label htmlFor="remember" className="text-sm font-normal">
               Ingat saya selama 30 hari
             </Label>

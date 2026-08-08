@@ -9,8 +9,8 @@ const now = new Date();
 
 const dummyUsers = [
   {
-    name: "Admin Nova",
-    email: "admin@nova.store",
+    name: "Admin Zacode",
+    email: "admin@zacode.store",
     password: "admin12345",
     role: "admin" as const,
     phone: "081234567891",
@@ -18,7 +18,7 @@ const dummyUsers = [
   },
   {
     name: "Budi Santoso",
-    email: "customer@nova.store",
+    email: "customer@zacode.store",
     password: "customer123",
     role: "customer" as const,
     phone: "081298765432",
@@ -26,7 +26,7 @@ const dummyUsers = [
   },
   {
     name: "Ayu Lestari",
-    email: "ayu@nova.store",
+    email: "ayu@zacode.store",
     password: "dummy12345",
     role: "customer" as const,
     phone: "081311112223",
@@ -34,7 +34,7 @@ const dummyUsers = [
   },
   {
     name: "Rizky Pratama",
-    email: "rizky@nova.store",
+    email: "rizky@zacode.store",
     password: "dummy12345",
     role: "customer" as const,
     phone: "082155556677",
@@ -42,7 +42,7 @@ const dummyUsers = [
   },
   {
     name: "Siti Rahma",
-    email: "siti@nova.store",
+    email: "siti@zacode.store",
     password: "dummy12345",
     role: "customer" as const,
     phone: "083812341234",
@@ -50,7 +50,7 @@ const dummyUsers = [
   },
   {
     name: "Dewa Putra",
-    email: "dewa@nova.store",
+    email: "dewa@zacode.store",
     password: "dummy12345",
     role: "customer" as const,
     phone: "085755556666",

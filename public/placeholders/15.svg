@@ -7,5 +7,5 @@
 <circle cx="700" cy="680" r="260" fill="rgba(0,0,0,0.12)"/>
 <circle cx="400" cy="360" r="120" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="36" />
 <text x="400" y="620" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" font-weight="700" letter-spacing="8" fill="rgba(255,255,255,0.9)">ORIGINAL</text>
-<text x="400" y="680" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" letter-spacing="4" fill="rgba(255,255,255,0.6)">NOVA STORE</text>
+<text x="400" y="680" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" letter-spacing="4" fill="rgba(255,255,255,0.6)">ZACODE STORE</text>
 </svg>

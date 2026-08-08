@@ -13,18 +13,18 @@ async function seed() {
   const [admin] = await db
     .select()
     .from(schema.users)
-    .where(eq(schema.users.email, "admin@nova.store"));
+    .where(eq(schema.users.email, "admin@zacode.store"));
 
   if (!admin) {
     await db.insert(schema.users).values({
       id: generateId(),
-      name: "Admin Nova",
-      email: "admin@nova.store",
+      name: "Admin Zacode",
+      email: "admin@zacode.store",
       password: await bcrypt.hash("admin12345", 10),
       role: "admin",
       emailVerified: now,
     });
-    console.log("✅ Default admin dibuat: admin@nova.store / admin12345");
+    console.log("✅ Default admin dibuat: admin@zacode.store / admin12345");
   } else {
     console.log("ℹ️ Admin sudah ada, dilewati.");
   }
@@ -32,17 +32,17 @@ async function seed() {
   const [demo] = await db
     .select()
     .from(schema.users)
-    .where(eq(schema.users.email, "customer@nova.store"));
+    .where(eq(schema.users.email, "customer@zacode.store"));
   if (!demo) {
     await db.insert(schema.users).values({
       id: generateId(),
       name: "Budi Santoso",
-      email: "customer@nova.store",
+      email: "customer@zacode.store",
       password: await bcrypt.hash("customer123", 10),
       role: "customer",
       emailVerified: now,
     });
-    console.log("✅ Customer demo dibuat: customer@nova.store / customer123");
+    console.log("✅ Customer demo dibuat: customer@zacode.store / customer123");
   }
 
   const catDefs = [
@@ -86,22 +86,22 @@ async function seed() {
     flash?: boolean;
     desc?: string;
   })[] = [
-    { name: "Wireless Earbuds Pro Max", cat: "Elektronik", brand: "Nova Audio", price: 899000, salePrice: 699000, stock: 45, weight: 80, badge: "best_seller", flash: true, sold: 1520, desc: "Earbuds nirkabel dengan Active Noise Cancelling, baterai 36 jam, dan kualitas suara premium.", featured: true },
-    { name: "Smart Watch Series 5", cat: "Aksesori", brand: "Nova Tech", price: 1499000, salePrice: 1199000, stock: 30, weight: 60, badge: "new", flash: false, sold: 640, desc: "Smartwatch dengan layar AMOLED, GPS, heart rate monitor, dan tahan air IP68.", featured: true },
-    { name: "Premium Leather Wallet", cat: "Fashion", brand: "Nova Leather", price: 249000, salePrice: 199000, stock: 100, weight: 150, badge: "best_seller", flash: false, sold: 2100, desc: "Dompet kulit asli premium dengan 8 slot kartu dan 2 slot uang.", featured: true },
-    { name: "Stainless Tumbler 750ml", cat: "Home & Living", brand: "Nova Home", price: 189000, salePrice: 149000, stock: 80, weight: 350, badge: "promo", flash: false, sold: 890, desc: "Botol minum stainless steel double-wall, tahan panas 12 jam dan dingin 24 jam.", featured: false },
-    { name: "Diffuser Aromaterapi", cat: "Home & Living", brand: "Nova Home", price: 159000, salePrice: 129000, stock: 60, weight: 400, badge: "none", flash: true, sold: 340, desc: "Diffuser ultrasonik dengan lampu 7 warna dan mati otomatis.", featured: false },
-    { name: "Serum Vitamin C Glow", cat: "Kecantikan", brand: "Nova Beauty", price: 129000, salePrice: 99000, stock: 120, weight: 50, badge: "best_seller", flash: false, sold: 3100, desc: "Serum vitamin C 20% dengan hyaluronic acid untuk kulit cerah merata.", featured: true },
-    { name: "Kopi Arabika Gayo 250g", cat: "Food & Beverage", brand: "Nova Coffee", price: 85000, salePrice: 69000, stock: 150, weight: 260, badge: "limited", flash: false, sold: 2200, desc: "Kopi arabika Gayo single origin, roasted medium, aroma kuat.", featured: true },
-    { name: "Kemeja Linen Premium", cat: "Fashion", brand: "Nova Apparel", price: 399000, salePrice: 329000, stock: 55, weight: 200, badge: "new", flash: false, sold: 410, desc: "Kemeja linen katun premium, breathable dan nyaman dipakai.", featured: false },
-    { name: "Keyboard Mechanical RGB", cat: "Elektronik", brand: "Nova Tech", price: 749000, salePrice: 649000, stock: 40, weight: 900, badge: "promo", flash: true, sold: 520, desc: "Keyboard mechanical hot-swappable dengan switch red dan RGB.", featured: false },
-    { name: "Parfum Eau de Toilette", cat: "Kecantikan", brand: "Nova Fragrance", price: 459000, salePrice: 399000, stock: 70, weight: 120, badge: "none", flash: false, sold: 780, desc: "Parfum woody oriental tahan lama hingga 8 jam.", featured: false },
-    { name: "Power Bank 20000mAh", cat: "Elektronik", brand: "Nova Tech", price: 349000, salePrice: 299000, stock: 90, weight: 350, badge: "best_seller", flash: false, sold: 1800, desc: "Power bank fast charging 22.5W dual port.", featured: false },
-    { name: "Sneakers Casual Premium", cat: "Fashion", brand: "Nova Apparel", price: 599000, salePrice: 499000, stock: 35, weight: 700, badge: "limited", flash: false, sold: 300, desc: "Sneakers kulit premium, sol empuk dan nyaman.", featured: false },
-    { name: "Blender Portable USB", cat: "Home & Living", brand: "Nova Home", price: 219000, salePrice: 179000, stock: 65, weight: 500, badge: "none", flash: false, sold: 250, desc: "Blender portable isi ulang USB untuk smoothie kapan saja.", featured: false },
-    { name: "Sunscreen SPF 50+ PA++++", cat: "Kecantikan", brand: "Nova Beauty", price: 99000, salePrice: 79000, stock: 200, weight: 40, badge: "best_seller", flash: true, sold: 4500, desc: "Sunscreen ringan tanpa whitecast, waterproof 80 menit.", featured: true },
-    { name: "Teh Daun Kelor Premium", cat: "Food & Beverage", brand: "Nova Herbal", price: 55000, stock: 180, weight: 100, badge: "new", flash: false, sold: 190, desc: "Teh daun kelor organik kaya antioksidan.", featured: false },
-    { name: "Tas Ransel Anti Air 25L", cat: "Fashion", brand: "Nova Apparel", price: 329000, salePrice: 279000, stock: 50, weight: 800, badge: "promo", flash: false, sold: 460, desc: "Ransel anti air dengan kompartemen laptop 15 inch.", featured: false },
+    { name: "Wireless Earbuds Pro Max", cat: "Elektronik", brand: "Zacode Audio", price: 899000, salePrice: 699000, stock: 45, weight: 80, badge: "best_seller", flash: true, sold: 1520, desc: "Earbuds nirkabel dengan Active Noise Cancelling, baterai 36 jam, dan kualitas suara premium.", featured: true },
+    { name: "Smart Watch Series 5", cat: "Aksesori", brand: "Zacode Tech", price: 1499000, salePrice: 1199000, stock: 30, weight: 60, badge: "new", flash: false, sold: 640, desc: "Smartwatch dengan layar AMOLED, GPS, heart rate monitor, dan tahan air IP68.", featured: true },
+    { name: "Premium Leather Wallet", cat: "Fashion", brand: "Zacode Leather", price: 249000, salePrice: 199000, stock: 100, weight: 150, badge: "best_seller", flash: false, sold: 2100, desc: "Dompet kulit asli premium dengan 8 slot kartu dan 2 slot uang.", featured: true },
+    { name: "Stainless Tumbler 750ml", cat: "Home & Living", brand: "Zacode Home", price: 189000, salePrice: 149000, stock: 80, weight: 350, badge: "promo", flash: false, sold: 890, desc: "Botol minum stainless steel double-wall, tahan panas 12 jam dan dingin 24 jam.", featured: false },
+    { name: "Diffuser Aromaterapi", cat: "Home & Living", brand: "Zacode Home", price: 159000, salePrice: 129000, stock: 60, weight: 400, badge: "none", flash: true, sold: 340, desc: "Diffuser ultrasonik dengan lampu 7 warna dan mati otomatis.", featured: false },
+    { name: "Serum Vitamin C Glow", cat: "Kecantikan", brand: "Zacode Beauty", price: 129000, salePrice: 99000, stock: 120, weight: 50, badge: "best_seller", flash: false, sold: 3100, desc: "Serum vitamin C 20% dengan hyaluronic acid untuk kulit cerah merata.", featured: true },
+    { name: "Kopi Arabika Gayo 250g", cat: "Food & Beverage", brand: "Zacode Coffee", price: 85000, salePrice: 69000, stock: 150, weight: 260, badge: "limited", flash: false, sold: 2200, desc: "Kopi arabika Gayo single origin, roasted medium, aroma kuat.", featured: true },
+    { name: "Kemeja Linen Premium", cat: "Fashion", brand: "Zacode Apparel", price: 399000, salePrice: 329000, stock: 55, weight: 200, badge: "new", flash: false, sold: 410, desc: "Kemeja linen katun premium, breathable dan nyaman dipakai.", featured: false },
+    { name: "Keyboard Mechanical RGB", cat: "Elektronik", brand: "Zacode Tech", price: 749000, salePrice: 649000, stock: 40, weight: 900, badge: "promo", flash: true, sold: 520, desc: "Keyboard mechanical hot-swappable dengan switch red dan RGB.", featured: false },
+    { name: "Parfum Eau de Toilette", cat: "Kecantikan", brand: "Zacode Fragrance", price: 459000, salePrice: 399000, stock: 70, weight: 120, badge: "none", flash: false, sold: 780, desc: "Parfum woody oriental tahan lama hingga 8 jam.", featured: false },
+    { name: "Power Bank 20000mAh", cat: "Elektronik", brand: "Zacode Tech", price: 349000, salePrice: 299000, stock: 90, weight: 350, badge: "best_seller", flash: false, sold: 1800, desc: "Power bank fast charging 22.5W dual port.", featured: false },
+    { name: "Sneakers Casual Premium", cat: "Fashion", brand: "Zacode Apparel", price: 599000, salePrice: 499000, stock: 35, weight: 700, badge: "limited", flash: false, sold: 300, desc: "Sneakers kulit premium, sol empuk dan nyaman.", featured: false },
+    { name: "Blender Portable USB", cat: "Home & Living", brand: "Zacode Home", price: 219000, salePrice: 179000, stock: 65, weight: 500, badge: "none", flash: false, sold: 250, desc: "Blender portable isi ulang USB untuk smoothie kapan saja.", featured: false },
+    { name: "Sunscreen SPF 50+ PA++++", cat: "Kecantikan", brand: "Zacode Beauty", price: 99000, salePrice: 79000, stock: 200, weight: 40, badge: "best_seller", flash: true, sold: 4500, desc: "Sunscreen ringan tanpa whitecast, waterproof 80 menit.", featured: true },
+    { name: "Teh Daun Kelor Premium", cat: "Food & Beverage", brand: "Zacode Herbal", price: 55000, stock: 180, weight: 100, badge: "new", flash: false, sold: 190, desc: "Teh daun kelor organik kaya antioksidan.", featured: false },
+    { name: "Tas Ransel Anti Air 25L", cat: "Fashion", brand: "Zacode Apparel", price: 329000, salePrice: 279000, stock: 50, weight: 800, badge: "promo", flash: false, sold: 460, desc: "Ransel anti air dengan kompartemen laptop 15 inch.", featured: false },
   ];
 
   let count = 0;
@@ -192,7 +192,7 @@ async function seed() {
     { name: "Rizky Pratama", role: "Pelanggan", content: "Packing rapi, original, dan harga lebih murah dari toko lain. Mantap!", rating: 5 },
     { name: "Siti Rahma", role: "Pelanggan", content: "Checkout-nya gampang banget, bayar pakai QRIS langsung jadi. Pelayanan memuaskan.", rating: 5 },
     { name: "Dewa Putra", role: "Pelanggan", content: "Sudah langganan 3x belanja disini, kualitas selalu konsisten. Recommended seller!", rating: 5 },
-    { name: "Maya Anggraini", role: "Pelanggan", content: "Barang sesuai foto, original, adminnya fast response. Terima kasih Nova Store!", rating: 5 },
+    { name: "Maya Anggraini", role: "Pelanggan", content: "Barang sesuai foto, original, adminnya fast response. Terima kasih Zacode Store!", rating: 5 },
     { name: "Fajar Nugraha", role: "Pelanggan", content: "Pengalaman belanja paling nyaman. Produk premium dengan harga bersahabat.", rating: 5 },
   ];
   for (const t of testimonials) {
@@ -262,7 +262,7 @@ async function seed() {
       excerpt: p.excerpt,
       content: p.content,
       thumbnail: `/placeholders/${Math.floor(Math.random() * 10) + 1}.svg`,
-      authorName: "Admin Nova",
+      authorName: "Admin Zacode",
       categoryId: postCatIds[p.cat],
       tags: p.tags,
       status: "published",

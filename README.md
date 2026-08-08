@@ -1,6 +1,6 @@
 # cms-midtrans
 
-# Nova Store — Website Personal Product Store
+# Zacode Store — Website Personal Product Store
 
 Platform e-commerce premium (Next.js 16 + PostgreSQL/Neon + Drizzle + Midtrans) dengan storefront, dashboard admin, blog CMS, dan pembayaran Midtrans.
 
@@ -31,8 +31,8 @@ npm run dev
 
 | Role | Email | Password |
 | --- | --- | --- |
-| Admin | `admin@nova.store` | `admin12345` |
-| Customer | `customer@nova.store` | `customer123` |
+| Admin | `admin@zacode.store` | `admin12345` |
+| Customer | `customer@zacode.store` | `customer123` |
 
 > Segera ganti password default!
 

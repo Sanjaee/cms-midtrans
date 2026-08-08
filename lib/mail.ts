@@ -32,7 +32,7 @@ export async function sendMail(
   try {
     const s = await getSettings();
     await transporter.sendMail({
-      from: s.smtpFrom || process.env.SMTP_FROM || "Nova Store <noreply@nova.store>",
+      from: s.smtpFrom || process.env.SMTP_FROM || "Zacode Store <noreply@zacode.store>",
       to,
       subject,
       html,
@@ -66,7 +66,7 @@ ${
 }
 </td></tr>
 <tr><td style="padding:20px 40px;background:#fafaf9;color:#a8a29e;font-size:12px;border-top:1px solid #f5f5f4;">
-Jika tombol tidak berfungsi, salin tautan ini ke browser Anda.<br/>— Nova Store
+Jika tombol tidak berfungsi, salin tautan ini ke browser Anda.<br/>— Zacode Store
 </td></tr>
 </table></td></tr></table>
 </body>

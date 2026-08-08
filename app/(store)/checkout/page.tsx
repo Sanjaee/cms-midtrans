@@ -9,7 +9,7 @@ import { CheckoutForm } from "@/components/checkout/checkout-form";
 
 export const metadata: Metadata = {
   title: "Checkout",
-  description: "Selesaikan pesanan Anda di Nova Store.",
+  description: "Selesaikan pesanan Anda di Zacode Store.",
 };
 
 export const dynamic = "force-dynamic";

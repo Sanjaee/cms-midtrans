@@ -65,7 +65,7 @@ export function timeAgo(date: Date | string) {
 }
 
 export function generateOrderNumber() {
-  return `NV-${Date.now().toString(36).toUpperCase()}${Math.floor(
+  return `ZC-${Date.now().toString(36).toUpperCase()}${Math.floor(
     Math.random() * 1000,
   ).toString().padStart(3, "0")}`;
 }

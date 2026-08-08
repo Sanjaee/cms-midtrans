@@ -165,6 +165,16 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+button:not(:disabled),
+[role="button"]:not(:disabled),
+[role="menuitem"]:not(:disabled),
+[role="switch"]:not(:disabled),
+label:has(input[type="checkbox"]),
+label:has(input[type="radio"]),
+select:not(:disabled) {
+  cursor: pointer;
+}
+
 .shimmer {
   background: linear-gradient(
     90deg,

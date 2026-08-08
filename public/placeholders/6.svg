@@ -7,5 +7,5 @@
 <circle cx="700" cy="680" r="260" fill="rgba(0,0,0,0.12)"/>
 <rect x="280" y="240" width="240" height="240" rx="48" fill="rgba(255,255,255,0.12)" />
 <text x="400" y="620" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" font-weight="700" letter-spacing="8" fill="rgba(255,255,255,0.9)">BEST SELLER</text>
-<text x="400" y="680" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" letter-spacing="4" fill="rgba(255,255,255,0.6)">NOVA STORE</text>
+<text x="400" y="680" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" letter-spacing="4" fill="rgba(255,255,255,0.6)">ZACODE STORE</text>
 </svg>
